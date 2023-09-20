@@ -1,0 +1,100 @@
+.element {
+  font-style: normal;
+  color: var(--color-dark-900);
+
+  &[data-state='h1'] {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-l);
+  }
+
+  &[data-state='h2'] {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='h3'] {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='body1'] {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='body2'] {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='subtitle1'] {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='subtitle2'] {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-m);
+  }
+
+  &[data-state='caption'] {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-s);
+  }
+
+  &[data-state='overline'] {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+  }
+
+  &[data-state='link1'] {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+    color: var(--color-info-500);
+    text-decoration-line: underline;
+  }
+
+  &[data-state='link2'] {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-s);
+    color: var(--color-info-500);
+    text-decoration-line: underline;
+  }
+
+  &[data-state='large'] {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-l);
+  }
+
+  &[data-color='light'] {
+    color: var(--color-light-100);
+  }
+
+  &[data-color='grey'] {
+    color: var(--color-light-900);
+  }
+
+  &[data-color='dark'] {
+    color: var(--color-dark-300);
+  }
+
+  &[data-color='violet'] {
+    color: var(--color-accent-500);
+  }
+
+  &[data-color='error'] {
+    color: var(--color-danger-300);
+  }
+}

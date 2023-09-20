@@ -1,0 +1,55 @@
+[data-orientation='horizontal'] {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+[data-orientation='vertical'] {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.tab {
+  padding: 6px 24px;
+  background-color: var(--color-dark-900);
+  color: var(--color-light-100);
+  border: 1px solid var(--color-dark-300);
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+
+  &:hover {
+    background-color: var(--color-dark-100);
+    color: var(--color-light-900);
+  }
+
+  &:focus {
+    border-color: var(--color-info-900);
+  }
+
+  &:disabled {
+    background-color: var(--color-dark-700);
+    color: var(--color-dark-300);
+  }
+}
+
+.firstTab {
+  border-radius: 2px 0 0 2px;
+}
+
+.lastTab {
+  border-radius: 0 2px 2px 0;
+}
+
+.singleTab {
+  border-radius: 2px;
+}
+
+button[data-state="active"] {
+  background-color: var(--color-accent-500);
+
+  &:hover {
+    background-color: var(--color-accent-700);
+  }
+}
