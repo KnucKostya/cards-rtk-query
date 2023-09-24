@@ -1,33 +1,27 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
-import style from './Typography.module.scss'
+import s from './Typography.module.scss'
 
-type Elements = keyof typeof ELEMENTS
-type Colors = 'violet' | 'light' | 'grey' | 'error' | 'dark'
+type TypographyElements = keyof typeof ELEMENTS
 
 type Props<T extends ElementType> = {
   htmlTag?: T
-  variant?: Elements
+  variant?: TypographyElements
   children?: ReactNode
   className?: string
-  color?: Colors
 } & ComponentPropsWithoutRef<T>
 
-export const Typography = <T extends ElementType = 'p'>(
+export const Typography = <T extends ElementType = 'span'>(
   props: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>
 ) => {
-  const { variant = 'body1', color, className, children, onClick, ...rest } = props
+  const { variant = 'body1', className, children, onClick, ...rest } = props
+
+  const finalClassName = `${s.element} ${className ? className : ''}`
 
   const Element = ELEMENTS[variant]
 
   return (
-    <Element
-      onClick={onClick}
-      className={`${style.element} ${className ? style.className : ''}`}
-      data-state={variant}
-      data-color={color}
-      {...rest}
-    >
+    <Element onClick={onClick} className={finalClassName} data-state={variant} {...rest}>
       {children}
     </Element>
   )
@@ -37,13 +31,13 @@ const ELEMENTS = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
-  subtitle1: 'p',
-  subtitle2: 'p',
-  body1: 'p',
-  body2: 'p',
+  subtitle1: 'span',
+  subtitle2: 'span',
+  body1: 'span',
+  body2: 'span',
   caption: 'span',
   link1: 'a',
   link2: 'a',
-  overline: 'p',
+  overline: 'span',
   large: 'p',
 } as const

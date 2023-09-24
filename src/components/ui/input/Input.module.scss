@@ -1,0 +1,71 @@
+@import '/src/styles/mixins';
+
+.defaultInputWithoutIcon {
+  position: relative;
+  color: var(--color-light-100);
+}
+
+.inputIcon {
+  position: relative;
+  color: var(--color-light-100);
+}
+
+.label{
+  @include label
+}
+
+input {
+  width: 284px;
+  height: 36px;
+
+  color: var(--color-light-100);
+
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+}
+
+input:hover {
+  color: var(--color-dark-100);
+  background-color: var(--color-dark-300);
+  border: 1px solid var(--color-dark-100);
+}
+
+input:focus {
+  border: 1px solid var(--color-info-700);
+  outline: none;
+}
+
+.inputIcon input {
+  padding-left: 30px; /* Учитывайте размер иконки */
+}
+
+.searchIcon {
+  position: absolute;
+  top: 30%;
+  left: 7px;
+  transform: translateY(-50%);
+}
+
+.rightSideIcon {
+  cursor: pointer;
+
+  position: absolute;
+  top: 30%;
+  right: 7px;
+  transform: translateY(-50%);
+}
+
+.error {
+  top: 60px;
+  width: 10px;
+  height: 24px;
+  color: var(--color-danger-300);
+}
+
+.errorInput {
+  color: var(--color-danger-300);
+  background-color: transparent;
+  border: 1px solid var(--color-danger-300);
+  border-radius: 2px;
+}

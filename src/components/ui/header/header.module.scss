@@ -1,0 +1,22 @@
+.header {
+  width: 100vh; //can be an error with adaptive
+  height: 60px;
+  background-color: var(--color-dark-700);
+}
+
+.logo {
+  height: 50px;
+  margin-left: 7%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10%;
+}
+
+.userContainer {
+  display: flex;
+  align-items: center;
+}

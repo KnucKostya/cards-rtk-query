@@ -1,0 +1,119 @@
+@import '/src/styles/mixins';
+
+button {
+  all: unset;
+}
+
+.label {
+  @include label
+}
+
+.selectTrigger {
+  cursor: pointer;
+
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 210px;
+  height: 36px;
+  padding: 0 15px;
+
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-light-100);
+
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  .SelectTrigger:disabled {
+    color: #0a6638;
+    background-color: #0a6638;
+  }
+
+  .SelectTrigger:hover {
+    cursor: pointer;
+    background-color: var(--color-dark-300);
+  }
+
+  .SelectTrigger:focus {
+    box-shadow: 0 0 0 1px var(--color-info-700);
+  }
+
+  .SelectTrigger:active {
+    margin-top: 42px;
+  }
+
+  .SelectTrigger[data-placeholder] {
+    color: var(--color-light-100);
+  }
+
+  /* arrow */
+  .selectIcon {
+    color: var(--color-light-100);
+  }
+}
+
+/* items in portal */
+.selectContent {
+  overflow: hidden;
+
+  width: 241px;
+  height: auto;
+
+  background-color: var(--color-dark-900);
+  border: 1px solid var(--color-dark-300);
+
+  .selectButton {
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 25px;
+
+    color: var(--violet-11);
+
+    background-color: white;
+  }
+
+  .selectViewPort {
+    cursor: pointer;
+  }
+
+  .selectGroup {
+    width: 230px;
+  }
+
+  .selectItem {
+    user-select: none;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 208px;
+    height: 36px;
+    padding: 0 15px;
+
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-light-100);
+
+    outline: 0;
+  }
+
+  .selectItem:hover {
+    width: 100vh;
+    background-color: var(--color-accent-900);
+  }
+
+  .selectItem[data-disabled] {
+    pointer-events: none;
+    color: var(--color-info-700);
+  }
+}
