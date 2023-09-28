@@ -4,24 +4,15 @@ import * as Dialog from '@radix-ui/react-dialog'
 
 import s from './Modal.module.scss'
 
-import { Button, ButtonProps } from '@/components/ui/button'
-
-export type ModalPropsType = ButtonProps & {
-  btnTitle: ReactNode
-  btnClassName?: string
-  children: ReactNode
+export type ModalPropsType = {
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+  children?: ReactNode
 }
 
-export const Modal = (props: ModalPropsType) => {
-  const { variant, btnClassName = '', btnTitle, children } = props
-
+export const Modal = ({ open, onOpenChange, children }: ModalPropsType) => {
   return (
-    <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <Button variant={variant} className={btnClassName}>
-          {btnTitle}
-        </Button>
-      </Dialog.Trigger>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className={s.overlay} />
         <Dialog.Content className={s.content}>

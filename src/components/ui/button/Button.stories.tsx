@@ -12,6 +12,9 @@ const meta = {
       control: { type: 'radio' },
     },
   },
+  args: {
+    href: '/main',
+  },
 } satisfies Meta<typeof Button>
 
 export default meta
@@ -32,6 +35,7 @@ export const Secondary: Story = {
     disabled: false,
   },
 }
+
 export const Tertiary: Story = {
   args: {
     variant: 'tertiary',
@@ -39,11 +43,21 @@ export const Tertiary: Story = {
     disabled: false,
   },
 }
+
 export const Link: Story = {
   args: {
     variant: 'link',
     children: 'Link Button',
     disabled: false,
+  },
+}
+
+export const AsLink: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Link that looks like a button',
+    as: 'a',
+    fullWidth: false,
   },
 }
 
@@ -53,13 +67,5 @@ export const FullWidth: Story = {
     children: 'Full Width Button',
     disabled: false,
     fullWidth: true,
-  },
-}
-
-export const AsLink: Story = {
-  args: {
-    variant: 'primary',
-    children: 'Link that looks like a button',
-    as: 'a',
   },
 }

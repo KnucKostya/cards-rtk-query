@@ -17,8 +17,11 @@ type Story = StoryObj<typeof meta>
 export const DisabledSelect: Story = {
   args: {
     disable: true,
+    label: 'Select',
   },
 }
-export const SelectWithLabel = () => {
-  return <Selector label={'select'} />
+export const SelectWithData = () => {
+  let data = ['lol', 'kek']
+
+  return <Selector label={'Select'} selectData={data} setSelectedValue={() => {}} />
 }

@@ -3,14 +3,20 @@ import { forwardRef, useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as Select from '@radix-ui/react-select'
 import { SelectItemProps } from '@radix-ui/react-select'
+import { clsx } from 'clsx'
 
 import s from './Select.module.scss'
 
-type SelectPropsType = {
+export type SelectPropsType = {
   selectName?: string
   selectData?: string[]
   disable?: boolean
   label?: string
+  setSelectedValue: (value: string) => void
+  value?: string
+  triggerClassName?: string
+  contentClassName?: string
+  name?: string
 }
 
 const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
@@ -23,33 +29,51 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
   }
 )
 
-export const Selector = ({ disable, label }: SelectPropsType) => {
+export const Selector = ({
+  setSelectedValue,
+  disable,
+  label,
+  selectData,
+  value,
+  triggerClassName,
+  contentClassName,
+}: SelectPropsType) => {
   const [open, setOpen] = useState(false)
+
+  const finalTriggerClassName = clsx(s.selectTrigger, triggerClassName && triggerClassName)
+
+  const finalContentClassName = clsx(s.selectContent, contentClassName && contentClassName)
 
   return (
     <div>
       <div className={s.label}>{label}</div>
-      {/*true*/}
-      <Select.Root open={open} onOpenChange={setOpen} disabled={disable}>
-        <Select.Trigger className={s.selectTrigger} aria-label="Food">
-          <Select.Value placeholder="Select a fruit…" />
+      <Select.Root
+        open={open}
+        onOpenChange={setOpen}
+        disabled={disable}
+        onValueChange={(value: string) => setSelectedValue(value)}
+        value={value}
+      >
+        <Select.Trigger className={finalTriggerClassName} aria-label="Select a value">
+          <Select.Value placeholder="Select a value…" />
           <Select.Icon className={s.selectIcon}>
             {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content className={s.selectContent} position="popper">
+          <Select.Content className={finalContentClassName} position="popper">
             <Select.ScrollUpButton className={s.selectButton}>
               <ChevronUpIcon />
             </Select.ScrollUpButton>
             <Select.Viewport className={s.selectViewPort}>
               <Select.Group className={s.selectGroup}>
-                {/*{valuesForSelect.map(el => el)} */}
-                <SelectItem value="apple">Apple</SelectItem>
-                <SelectItem value="banana">Banana</SelectItem>
-                <SelectItem value="blueberry">Blueberry</SelectItem>
-                <SelectItem value="grapes">Grapes</SelectItem>
-                <SelectItem value="pineapple">Pineapple</SelectItem>
+                {selectData?.map((el, index) => {
+                  return (
+                    <SelectItem key={index} value={el}>
+                      {el}
+                    </SelectItem>
+                  )
+                })}
               </Select.Group>
             </Select.Viewport>
           </Select.Content>

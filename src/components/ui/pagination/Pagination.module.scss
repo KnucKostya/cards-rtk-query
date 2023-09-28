@@ -1,0 +1,128 @@
+.paginationContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  list-style-type: none;
+
+  .paginationArrow {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 2px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-dark-500);
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+
+        display: block;
+
+        width: 7px;
+        height: 7px;
+
+        border-top: 1.9px solid var(--color-light-100);
+        border-right: 1.9px solid var(--color-light-100);
+      }
+
+      &.leftArrow {
+        transform: rotate(-135deg) translate(-50%);
+      }
+
+      &.rightArrow {
+        transform: rotate(45deg);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      .arrow::before {
+        border-top: 1.9px solid var(--color-dark-100);
+        border-right: 1.9px solid var(--color-dark-100);
+      }
+
+      &:hover {
+        cursor: default;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+
+    &.dots:hover {
+      cursor: default;
+      background-color: transparent;
+    }
+  }
+
+  .paginationItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    background-color: transparent;
+    border-radius: 2px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-dark-500);
+    }
+
+    &.selected {
+      background-color: var(--color-light-100);
+    }
+  }
+
+  .settings {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 15px;
+  }
+}
+
+.textColorDark {
+  color: var(--color-dark-900);
+}
+
+.textColorLight {
+  color: var(--color-light-100);
+}
+
+button.trigger {
+  width: 50px;
+  padding: 0 6px;
+}
+
+div.content {
+  width: 63.5px;
+}

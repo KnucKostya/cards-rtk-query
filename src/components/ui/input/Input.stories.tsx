@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ChangeEvent, useState } from 'react'
 
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -34,7 +35,7 @@ export const DefaultInput = () => {
   return <Input label={'Input'} value={inputValue} onChange={onChangeInputValueHandler} />
 }
 
-export const inputWithIcons = () => {
+export const InputWithIcons = () => {
   let searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: '#ffffff' }} />
   let rightSideIcon = <FontAwesomeIcon icon={faXmark} style={{ color: '#ffffff' }} />
 
@@ -44,7 +45,7 @@ export const inputWithIcons = () => {
   return <Input label={'Input'} leftSideIcon={searchIcon} rightSideIcon={rightSideIcon} />
 }
 export const inputWithError = () => {
-  let error = 'error'
+  let error = 'Error fdffdf sds DSDDDdsdsdsdsds'
 
-  return <Input error={error} label={'Input'} />
+  return <Input errorMessage={error} label={'Input'} />
 }

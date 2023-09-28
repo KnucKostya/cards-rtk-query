@@ -6,6 +6,8 @@
 }
 
 .content {
+  min-width: 220px;
+  padding: 18px 24px;
   background-color: var(--color-dark-500);
   border-radius: 2px;
   box-shadow:
@@ -15,7 +17,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 25px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
   &:focus {
@@ -24,12 +25,11 @@
 }
 
 .closeBtn {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   position: absolute;
-  top: 5px;
-  right: 5px;
-  border-radius: 50%;
+  top: 18px;
+  right: 24px;
   background-color: transparent;
   border: none;
   cursor: pointer;

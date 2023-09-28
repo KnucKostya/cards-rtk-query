@@ -10,11 +10,11 @@
   color: var(--color-light-100);
 }
 
-.label{
-  @include label
+.label {
+  @include label;
 }
 
-input {
+.input {
   width: 284px;
   height: 36px;
 
@@ -25,24 +25,30 @@ input {
   border-radius: 2px;
 }
 
-input:hover {
+.input:hover {
   color: var(--color-dark-100);
   background-color: var(--color-dark-300);
   border: 1px solid var(--color-dark-100);
 }
 
-input:focus {
+.input:focus {
   border: 1px solid var(--color-info-700);
   outline: none;
 }
 
-.inputIcon input {
+.input:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: var(--color-dark-300);
+}
+
+.inputIcon .input {
   padding-left: 30px; /* Учитывайте размер иконки */
 }
 
 .searchIcon {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 7px;
   transform: translateY(-50%);
 }
@@ -51,16 +57,18 @@ input:focus {
   cursor: pointer;
 
   position: absolute;
-  top: 30%;
+  top: 50%;
   right: 7px;
   transform: translateY(-50%);
 }
 
 .error {
-  top: 60px;
-  width: 10px;
-  height: 24px;
-  color: var(--color-danger-300);
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #f23d61;
+  word-wrap: break-word;
 }
 
 .errorInput {

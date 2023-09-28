@@ -25,14 +25,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const SimpleCard: Story = {}
-
 export const CardWithContent: Story = {
   render: () => <Card1 />,
 }
 
 const Card1 = () => {
-  const [checked, setChecked] = useState<boolean>(false)
+  const [checked, setChecked] = useState<boolean | 'indeterminate'>(false)
   const options = [
     { label: 'First', value: 'first' },
     { label: 'Second', value: 'second' },
@@ -43,11 +41,20 @@ const Card1 = () => {
   ]
 
   return (
-    <Card classNameContent={'extra'}>
+    <Card
+      style={{
+        padding: '40px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '30px',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Typography variant={'h1'} color={'light'}>
         Unknown title
       </Typography>
-      <Checkbox label={'Check-box'} checked={checked} onChange={setChecked} />
+      <Checkbox label={'Check-box'} checked={checked} onCheckedChange={setChecked} />
       <Button>Just button</Button>
       <RadioGroup options={options} />
     </Card>

@@ -1,4 +1,11 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
+} from 'react'
 
 import s from './Typography.module.scss'
 
@@ -10,22 +17,6 @@ type Props<T extends ElementType> = {
   children?: ReactNode
   className?: string
 } & ComponentPropsWithoutRef<T>
-
-export const Typography = <T extends ElementType = 'span'>(
-  props: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>
-) => {
-  const { variant = 'body1', className, children, onClick, ...rest } = props
-
-  const finalClassName = `${s.element} ${className ? className : ''}`
-
-  const Element = ELEMENTS[variant]
-
-  return (
-    <Element onClick={onClick} className={finalClassName} data-state={variant} {...rest}>
-      {children}
-    </Element>
-  )
-}
 
 const ELEMENTS = {
   h1: 'h1',
@@ -41,3 +32,25 @@ const ELEMENTS = {
   overline: 'span',
   large: 'p',
 } as const
+
+const TypographyPolymorph = <T extends ElementType = 'span'>(
+  props: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>,
+  ref: ElementRef<T>
+) => {
+  const { variant = 'body1', className, children, onClick, htmlTag, ...rest } = props
+
+  const finalClassName = `${s.element} ${className ? className : ''}`
+
+  const Element = htmlTag !== undefined ? htmlTag : ELEMENTS[variant]
+
+  return (
+    <Element ref={ref} onClick={onClick} className={finalClassName} data-state={variant} {...rest}>
+      {children}
+    </Element>
+  )
+}
+
+export const Typography = forwardRef(TypographyPolymorph) as <T extends ElementType = 'button'>(
+  props: Props<T> &
+    Omit<ComponentPropsWithoutRef<T>, keyof Props<T>> & { ref?: ForwardedRef<ElementRef<T>> }
+) => ReturnType<typeof TypographyPolymorph>

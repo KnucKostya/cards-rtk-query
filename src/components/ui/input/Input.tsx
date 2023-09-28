@@ -1,36 +1,74 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+import { clsx } from 'clsx'
+
 import s from './Input.module.scss'
+
+import { Typography } from '@/components/ui/typography'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
-type AdditionalTypeToInput = {
+export type AdditionalTypeToInput = {
   leftSideIcon?: JSX.Element
   rightSideIcon?: JSX.Element
-  error?: string
-  label: string
+  errorMessage?: string
+  label?: string
+  value?: string
+  name?: string
+  callBack?: (value: boolean) => void
+  callBackValue?: boolean
 }
 
-type InputPropsType = ComponentPropsWithoutRef<'input'> & AdditionalTypeToInput
+export type InputPropsType = ComponentPropsWithoutRef<'input'> & AdditionalTypeToInput
 
 export const Input = (props: InputPropsType) => {
-  let { label, error, leftSideIcon, rightSideIcon, disabled, value, onChange } = props
+  let {
+    name,
+    label,
+    errorMessage,
+    leftSideIcon,
+    rightSideIcon,
+    disabled,
+    value,
+    onChange,
+    className,
+    callBack,
+    callBackValue,
+    ...rest
+  } = props
+
+  const showPasswordHandler = () => {
+    callBack?.(!callBackValue)
+  }
+
+  const finalClassName = clsx(s.input, errorMessage && s.errorInput, className && className)
 
   return (
     <div>
-      <div className={s.label}>{label}</div>
+      <Typography variant={'body2'} className={s.label}>
+        {label}
+      </Typography>
+      {/*<div className={s.label}>{label}</div>*/}
       <div className={leftSideIcon ? s.inputIcon : s.defaultInputWithoutIcon}>
         {leftSideIcon && <span className={s.searchIcon}>{leftSideIcon}</span>}
         <input
           type="text"
-          placeholder={'Input'}
+          placeholder={name}
           disabled={disabled}
           value={value}
           onChange={onChange}
-          className={error ? s.errorInput : s.input}
+          className={finalClassName}
+          {...rest}
         />
-        {rightSideIcon && <span className={s.rightSideIcon}>{rightSideIcon}</span>}
-        {error !== '' && <div className={s.error}>{error}</div>}
+        {rightSideIcon && <span className={s.rightSideIcon} onClick={showPasswordHandler}>{rightSideIcon}</span>}
+        {errorMessage !== '' && (
+          <div>
+            <Typography variant={'body2'} className={s.error}>
+              {errorMessage}
+            </Typography>
+          </div>
+        )}
+        {/*{errorMessage !== '' && <div className={s.error}>{errorMessage}</div>}*/}
       </div>
     </div>
   )

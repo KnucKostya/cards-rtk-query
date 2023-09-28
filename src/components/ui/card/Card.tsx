@@ -1,21 +1,19 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
+
+import { clsx } from 'clsx'
 
 import s from './Card.module.scss'
 
-type Props = {
-  children?: ReactNode
-  classNameCard?: string
-  classNameContent?: string
-}
-export const Card = (props: Props) => {
-  const { children, classNameCard, classNameContent } = props
+type Props = ComponentPropsWithoutRef<'div'>
 
-  const finalCardClassName = `${s.card} ${classNameCard ? s[classNameCard] : ''}`
-  const finalContentClassName = `${s.content} ${classNameContent ? s[classNameContent] : ''}`
+export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
+  const { children, className, ...rest } = props
+
+  const finalCardClassName = clsx(s.card, className && className)
 
   return (
-    <div className={finalCardClassName}>
-      <div className={finalContentClassName}>{children}</div>
+    <div ref={ref} className={finalCardClassName} {...rest}>
+      {children}
     </div>
   )
-}
+})
