@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, ElementRef, ElementType, ForwardedRef, forwardRef } from 'react'
-
 import s from './Button.module.scss'
 
 export type ButtonProps<T extends ElementType = 'button'> = {

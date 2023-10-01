@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
-
 import * as Dialog from '@radix-ui/react-dialog'
-
 import s from './Modal.module.scss'
 
 export type ModalPropsType = {

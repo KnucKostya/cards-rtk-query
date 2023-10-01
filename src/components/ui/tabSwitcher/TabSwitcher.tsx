@@ -1,5 +1,4 @@
 import * as Tabs from '@radix-ui/react-tabs'
-
 import s from './TabSwitcher.module.scss'
 
 export type TabType = {

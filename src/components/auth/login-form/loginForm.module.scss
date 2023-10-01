@@ -1,0 +1,81 @@
+@import '@/styles/mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 33px 36px 60px;
+
+  .signTypography {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .error {
+    @include custom-text-style(
+      var(--font-family-primary),
+      12px,
+      400,
+      24px,
+      var(--color-danger-300)
+    );
+  }
+
+  .input {
+    margin-top: 5%;
+  }
+
+  .checkBox {
+    position: relative;
+    right: 8px;
+
+    display: flex;
+
+    margin-top: 5%;
+    padding: 0;
+  }
+
+  .forgotTypography {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    margin-top: 1%;
+    margin-bottom: 15%;
+  }
+
+  .button {
+    margin-top: 5%;
+
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    word-wrap: break-word;
+  }
+
+  .signUpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .question {
+      margin-top: 5%;
+
+      font-family: var(--font-family-primary);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      color: var(--color-light-700);
+      word-wrap: break-word;
+    }
+
+    .registerLink {
+      margin-top: 5%;
+      margin-bottom: 5%;
+      text-decoration-line: underline;
+    }
+  }
+}

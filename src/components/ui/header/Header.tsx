@@ -1,6 +1,5 @@
-import s from './header.module.scss'
-
 import headerLogo from '@/images/cardsLogo.png'
+import s from './header.module.scss'
 
 type HeaderPropsType = {
   isAuth: boolean

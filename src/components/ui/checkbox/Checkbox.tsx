@@ -1,12 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as Label from '@radix-ui/react-label'
-
-import s from './Checkbox.module.scss'
-
 import { CheckedIcon } from '@/components/ui/checkbox'
 import { Typography } from '@/components/ui/typography'
+import { clsx } from 'clsx'
+import s from './Checkbox.module.scss'
 
 export type CheckboxProps = {
   label?: string
@@ -14,7 +12,9 @@ export type CheckboxProps = {
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
   (props, ref) => {
-    const { checked, disabled, label, onChange, onCheckedChange, ...rest } = props
+    const { checked, disabled, label, onChange, className, ...rest } = props
+
+    const finalClassName = clsx(s.root, className)
 
     return (
       <Label.Root className={s.label}>
@@ -24,10 +24,9 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
         <div className={s.checkboxWrapper}>
           <CheckboxRadix.Root
             ref={ref}
-            className={s.root}
+            className={finalClassName}
             checked={checked}
             disabled={disabled}
-            onCheckedChange={onCheckedChange}
             {...rest}
           >
             <CheckboxRadix.Indicator className={s.indicator}>

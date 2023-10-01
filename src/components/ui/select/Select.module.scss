@@ -1,4 +1,4 @@
-@import '/src/styles/mixins';
+@import '@/styles/mixins';
 
 button {
   all: unset;
@@ -9,15 +9,14 @@ button {
 }
 
 .selectTrigger {
+  @include display-flex(inline-flex);
+
+  @include size(210px, 36px);
+
   cursor: pointer;
 
-  display: inline-flex;
   gap: 5px;
-  align-items: center;
-  justify-content: space-between;
 
-  width: 210px;
-  height: 36px;
   padding: 0 15px;
 
   font-weight: 400;
@@ -64,16 +63,11 @@ button {
   border: 1px solid var(--color-dark-300);
 
   .selectButton {
+    @include display-flex;
+
     cursor: default;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     height: 25px;
-
     color: var(--violet-11);
-
     background-color: white;
   }
 

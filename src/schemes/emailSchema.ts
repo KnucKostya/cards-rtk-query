@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-export const forgotPasswordSchema = z.object({
+export const emailSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
 })

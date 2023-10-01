@@ -46,6 +46,7 @@ export const InputWithIcons = () => {
 }
 export const inputWithError = () => {
   let error = 'Error fdffdf sds DSDDDdsdsdsdsds'
+  let searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: '#ffffff' }} />
 
-  return <Input errorMessage={error} label={'Input'} />
+  return <Input errorMessage={error} label={'Input'} rightSideIcon={searchIcon} />
 }

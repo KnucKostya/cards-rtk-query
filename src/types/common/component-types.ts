@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-import { createNewPasswordSchema, forgotPasswordSchema } from '@/schemes'
+import { createNewPasswordSchema, emailSchema } from '@/schemes'
 
-export type ForgotPasswordFields = z.infer<typeof forgotPasswordSchema>
+export type ForgotPasswordFields = z.infer<typeof emailSchema>
 
 export type CreateNewPasswordFields = z.infer<typeof createNewPasswordSchema>
 

@@ -1,12 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-
 import { Label } from '@radix-ui/react-label'
 import * as Radio from '@radix-ui/react-radio-group'
-
-import s from './RadioGroup.module.scss'
-
 import { Typography } from '@/components/ui/typography'
 import { RadioGroupOptions } from '@/types/common'
+import { clsx } from 'clsx'
+import s from './RadioGroup.module.scss'
 
 export type RadioGroupProps = {
   options: RadioGroupOptions[]
@@ -14,17 +12,12 @@ export type RadioGroupProps = {
 
 export const RadioGroup = forwardRef<ElementRef<typeof Radio.Root>, RadioGroupProps>(
   (props, ref) => {
-    const { disabled, className, options, onValueChange, defaultValue, ...rest } = props
+    const { disabled, className, options, ...rest } = props
+
+    const finalClassName = clsx(s.root, className)
 
     return (
-      <Radio.Root
-        ref={ref}
-        onValueChange={onValueChange}
-        defaultValue={defaultValue}
-        className={s.root}
-        disabled={disabled}
-        {...rest}
-      >
+      <Radio.Root ref={ref} className={finalClassName} disabled={disabled} {...rest}>
         {options.map((item, index) => (
           <Label key={index} className={s.label}>
             <Typography variant={'body2'} className={!disabled ? s.textColor : s.disabledTextColor}>

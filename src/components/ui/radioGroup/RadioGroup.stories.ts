@@ -23,6 +23,6 @@ const options = [
 export const Radio: Story = {
   args: {
     options,
-    disabled: true,
+    disabled: false,
   },
 }

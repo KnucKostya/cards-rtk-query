@@ -1,10 +1,8 @@
 import { forwardRef, useState } from 'react'
-
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as Select from '@radix-ui/react-select'
 import { SelectItemProps } from '@radix-ui/react-select'
 import { clsx } from 'clsx'
-
 import s from './Select.module.scss'
 
 export type SelectPropsType = {

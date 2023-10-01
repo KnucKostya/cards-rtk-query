@@ -1,14 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-
-import s from './ForgotPasswordForm.module.scss'
-
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { ControlledInput } from '@/components/ui/controlled/controlledInput'
 import { Typography } from '@/components/ui/typography'
-import { forgotPasswordSchema } from '@/schemes'
+import { emailSchema } from '@/schemes'
 import { ForgotPasswordFields } from '@/types/common'
+import s from './ForgotPasswordForm.module.scss'
 
 type Props = {
   onSubmit: (values: ForgotPasswordFields) => void
@@ -22,7 +20,7 @@ export const ForgotPasswordForm = (props: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<ForgotPasswordFields>({
-    resolver: zodResolver(forgotPasswordSchema),
+    resolver: zodResolver(emailSchema),
     mode: 'onSubmit',
   })
 

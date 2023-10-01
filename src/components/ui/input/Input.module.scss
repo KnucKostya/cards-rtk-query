@@ -1,5 +1,9 @@
 @import '/src/styles/mixins';
 
+.inputWrapper {
+  width: 100%;
+}
+
 .defaultInputWithoutIcon {
   position: relative;
   color: var(--color-light-100);
@@ -12,14 +16,14 @@
 
 .label {
   @include label;
+
+  margin-top: 5%;
 }
 
 .input {
-  width: 284px;
-  height: 36px;
+  @include size(100%, 36px);
 
   color: var(--color-light-100);
-
   background-color: transparent;
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
@@ -43,7 +47,7 @@
 }
 
 .inputIcon .input {
-  padding-left: 30px; /* Учитывайте размер иконки */
+  padding-left: 30px;
 }
 
 .searchIcon {
@@ -63,12 +67,7 @@
 }
 
 .error {
-  font-family: var(--font-family-primary);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #f23d61;
-  word-wrap: break-word;
+  @include custom-text-style(var(--font-family-primary), 12px, 400, 24px, var(--color-danger-300));
 }
 
 .errorInput {

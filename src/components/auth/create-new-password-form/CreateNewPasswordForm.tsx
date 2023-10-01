@@ -1,18 +1,16 @@
 import { useState } from 'react'
-
-import { faEye, faEyeLowVision } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-
-import s from './CreateNewPassword.module.scss'
-
+import eye from '@/assets/icons/eye.svg'
+import crossedEye from '@/assets/icons/eye_crossed.svg'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { ControlledInput } from '@/components/ui/controlled/controlledInput'
+import { Icon } from '@/components/ui/icon'
 import { Typography } from '@/components/ui/typography'
 import { createNewPasswordSchema } from '@/schemes'
 import { CreateNewPasswordFields } from '@/types/common'
+import s from './CreateNewPassword.module.scss'
 
 type Props = {
   onSubmit: (values: CreateNewPasswordFields) => void
@@ -36,11 +34,7 @@ export const CreateNewPasswordForm = (props: Props) => {
     onSubmit(data)
   })
 
-  const icon = showPassword ? (
-    <FontAwesomeIcon icon={faEyeLowVision} style={{ color: '#ffffff' }} />
-  ) : (
-    <FontAwesomeIcon icon={faEye} style={{ color: '#ffffff' }} />
-  )
+  const icon = showPassword ? <Icon srcIcon={crossedEye} /> : <Icon srcIcon={eye} />
 
   const inputType = showPassword ? 'text' : 'password'
 

@@ -1,0 +1,59 @@
+@import '/src/styles/mixins';
+
+.container {
+  @include display-column;
+
+  padding: 10%;
+
+  .typoInfo {
+    @include custom-text-style(var(--font-family-primary), 26px, 700, 36px, white);
+  }
+
+  .userPhoto {
+    @include size(96px, 96px);
+
+    border-radius: 47%;
+  }
+
+  .editLogo {
+    position: relative;
+    z-index: 9999;
+    right: 25px;
+    bottom: 5px;
+
+    padding: 3px;
+
+    background-color: var(--color-dark-300);
+    border-radius: 6px;
+  }
+
+  .input{
+    margin-top: 5%;
+  }
+
+  .nameEmailBlock{
+
+    @include display-column;
+
+    margin-top: 5%;
+
+    .editIcon {
+      margin-left: 10px;
+    }
+
+    .email {
+      @include custom-text-style(14px,Roboto,400,24px,var(--color-dark-300));
+
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+
+  }
+
+
+  .button {
+    width: 83%;
+    margin-top: 10%;
+    box-shadow: none;
+  }
+}

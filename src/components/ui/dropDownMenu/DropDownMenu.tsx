@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
-
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-
 // import s from './DropDownMenu.module.scss'
 
 type SideType = 'top' | 'right' | 'bottom' | 'left' | undefined

@@ -6,7 +6,7 @@ import {
   forwardRef,
   ReactNode,
 } from 'react'
-
+import { clsx } from 'clsx'
 import s from './Typography.module.scss'
 
 type TypographyElements = keyof typeof ELEMENTS
@@ -39,7 +39,7 @@ const TypographyPolymorph = <T extends ElementType = 'span'>(
 ) => {
   const { variant = 'body1', className, children, onClick, htmlTag, ...rest } = props
 
-  const finalClassName = `${s.element} ${className ? className : ''}`
+  const finalClassName = clsx(s.element, className)
 
   const Element = htmlTag !== undefined ? htmlTag : ELEMENTS[variant]
 

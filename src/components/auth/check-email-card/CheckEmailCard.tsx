@@ -1,9 +1,9 @@
-import s from './CheckEmailCard.module.scss'
-
+import letter from '@/assets/icons/check_email.svg'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { Icon } from '@/components/ui/icon'
 import { Typography } from '@/components/ui/typography'
-import letter from '@/images/check_email.svg'
+import s from './CheckEmailCard.module.scss'
 
 export const CheckEmailCard = () => {
   return (
@@ -11,7 +11,7 @@ export const CheckEmailCard = () => {
       <Typography className={s.title} variant={'large'}>
         Check Email
       </Typography>
-      <img src={letter} alt={'letter'} />
+      <Icon srcIcon={letter} />
       <Typography className={s.subtitle} variant={'body2'}>
         We’ve sent an Email with instructions to example@mail.com
       </Typography>

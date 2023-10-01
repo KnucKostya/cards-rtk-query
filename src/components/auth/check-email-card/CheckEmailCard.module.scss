@@ -8,13 +8,17 @@
 }
 
 .title {
-  margin-bottom: 27px !important;
+  margin-bottom: 27px;
   color: var(--color-light-100);
 }
 
 .subtitle {
-  margin-top: 19px !important;
-  margin-bottom: 65px !important;
+  margin-top: 19px;
+  margin-bottom: 65px;
   color: var(--color-dark-100);
   text-align: center;
+}
+
+.test2 {
+  margin: 40px;
 }

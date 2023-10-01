@@ -1,25 +1,12 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
-import s from './Table.module.scss'
+type Props = ComponentPropsWithoutRef<'table'>
+export const Table = forwardRef<HTMLTableElement, Props>((props, ref) => {
+  const { children, ...rest } = props
 
-export type TablesProps = {
-  colored?: boolean
-  fullWidth?: boolean
-  children: ReactNode
-  className?: string
-}
-
-export const Table = ({
-  colored = false,
-  fullWidth = false,
-  children,
-  className = '',
-}: TablesProps) => {
-  const finalClassName = `${s.table}
-    + ' ' + ${colored ? s.colored : ''}
-    + ' ' + ${fullWidth ? s.fullWidth : ''}
-    + ' ' + ${className}
-    `
-
-  return <div className={finalClassName}>{children}</div>
-}
+  return (
+    <table ref={ref} {...rest}>
+      {children}
+    </table>
+  )
+})

@@ -1,10 +1,8 @@
-import { clsx } from 'clsx'
-
-import s from './Pagination.module.scss'
-
 import { Selector } from '@/components/ui/select'
 import { Typography } from '@/components/ui/typography'
 import { usePagination } from '@/hooks'
+import { clsx } from 'clsx'
+import s from './Pagination.module.scss'
 
 type Props = {
   options: string[]
@@ -48,7 +46,7 @@ export const Pagination = (props: Props) => {
 
   const lastPage = paginationRange[paginationRange.length - 1]
 
-  const containerClassName = clsx(s.paginationContainer, className && className)
+  const containerClassName = clsx(s.paginationContainer, className)
 
   const leftArrowClassName = clsx(s.paginationArrow, currentPage === 1 && s.disabled)
 
