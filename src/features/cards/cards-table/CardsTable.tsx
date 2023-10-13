@@ -9,9 +9,9 @@ import deleteIcon from '@/assets/icons/delete_icon.svg'
 import { CardsModals } from '@/types/common'
 import { DeleteCard } from '@/components/modals/cards/delete-card/DeleteCard.tsx'
 import editIcon from '@/assets/icons/edit_icon.svg'
-import { AddEditNewCardModal } from '@/components/modals/cards/add-edit-new-card/AddEditNewCardModal.tsx'
 import { CardData } from '@/features/cards/Types.ts'
 import s from './cardsTable.module.scss'
+import { EditCardModal } from '@/components/modals/cards/edit-card/EditNewCard.tsx'
 
 type TablePropsType = {
   inputSearchData: CardData[]
@@ -71,7 +71,8 @@ const CardsTable = (props: TablePropsType) => {
                   onClick={() => mutateCardHandler(item, CardsModals.UPDATE)}
                   alt={'edit icon'}
                 />
-                <AddEditNewCardModal
+                <EditCardModal
+                  name={'Edit Card'}
                   open={openModal}
                   setModalState={setModalState}
                   editCard={editCardHandler}

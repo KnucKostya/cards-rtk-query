@@ -65,7 +65,7 @@ export const DeckPack = () => {
     minCardsCount: String(debouncedSliderValues[0]),
     orderBy: sortedString,
   })
-
+  console.log(data)
   const clearFilterHandler = () => {
     setName('')
     setSliderValues([0, 52])
