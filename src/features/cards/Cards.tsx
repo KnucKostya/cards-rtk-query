@@ -14,12 +14,12 @@ import {
   usePostCardMutation,
 } from '@/features/cards/CardsApi.ts'
 import { Input } from '@/components/ui/input'
-import { AddEditNewCardModal } from '@/components/modals/cards/add-edit-new-card/AddEditNewCardModal.tsx'
 import { CardsModals } from '@/types/common'
 import { Button } from '@/components/ui/button'
 import { CardData } from '@/features/cards/Types.ts'
 import { PackOptions } from '@/components/modals/cards/pack-options/PackOptions.tsx'
 import CardsTable from '@/features/cards/cards-table/CardsTable.tsx'
+import { AddCardModal } from '@/components/modals/cards/add-new-card/AddNewCard.tsx'
 
 export const Cards = memo(() => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -29,17 +29,13 @@ export const Cards = memo(() => {
   const [itemsOnPage, setItemsOnPage] = useState(10)
   const [postCard] = usePostCardMutation({})
   const [editCard] = usePatchCardMutation({})
-  let temporaryPackId = 'clncye7q80smlvo2qvhrs59uo'
-
-  console.log('1', openModal)
-
+  let temporaryPackId = 'clnoybj4l0yvtvo2qfif81vyp'
   const { data } = useGetCardsQuery({
     packId: temporaryPackId,
     currentPage,
     itemsPerPage: itemsOnPage,
   })
 
-  console.log(data)
   const selectOptions = ['10', '20', '30', '50', '100']
 
   if (!data) {
@@ -59,8 +55,15 @@ export const Cards = memo(() => {
   })
 
   const addNewCardHandler = async (question: string, answer: string) => {
+    // console.log('answer', answer)
+    // console.log('question', question)
+    // console.log('temporaryPackId', temporaryPackId)
+    console.log('function add is called')
+
+    const data = { answer, question, packId: temporaryPackId }
+    console.log(data)
     try {
-      await postCard({ answer, question, packId: temporaryPackId })
+      await postCard(data)
       setModalState(null)
     } catch (e) {
       console.log(e)
@@ -68,15 +71,17 @@ export const Cards = memo(() => {
   }
 
   const editCardhandler = async (question: string, answer: string) => {
-    try {
-      await editCard({ question, answer, packId: itemData ? itemData.id : '' })
-      setModalState(null)
-
-      return 1
-    } catch (e) {
-      console.log(e)
+    console.log('function edit is called')
+    if (openModal === CardsModals.UPDATE) {
+      try {
+        await editCard({ question, answer, packId: itemData ? itemData.id : '' })
+        setModalState(null)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
+
   const mutateCardHandler = (item: CardData, mutationType: CardsModals) => {
     setModalState(mutationType)
     setItemData(item)
@@ -105,7 +110,8 @@ export const Cards = memo(() => {
             </span>
           </Typography>
           <Button onClick={() => setModalState(CardsModals.CREATE)}>Add New Card</Button>
-          <AddEditNewCardModal
+          <AddCardModal
+            name={'Add New Card'}
             open={openModal}
             setModalState={setModalState}
             createCard={addNewCardHandler}

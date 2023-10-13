@@ -11,15 +11,15 @@ import { ControlledInput } from '@/components/ui/controlled/controlledInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newCardSchema } from '@/schemes'
 
-type AddEditNewCardPropsType = {
+type AddCardModalPropsType = {
   open: CardsModals | null
+  name: string
   setModalState: (value: CardsModals | null) => void
-  createCard?: (question: string, answer: string) => void
-  editCard?: (question: string, answer: string) => void
+  createCard: (question: string, answer: string) => void
 }
 
-export const AddEditNewCardModal = React.memo(
-  ({ open, setModalState, createCard, editCard }: AddEditNewCardPropsType) => {
+export const AddCardModal = React.memo(
+  ({ open, setModalState, createCard, name }: AddCardModalPropsType) => {
     const { control, handleSubmit } = useForm<NewCardField>({
       resolver: zodResolver(newCardSchema),
       mode: 'onSubmit',
@@ -29,29 +29,18 @@ export const AddEditNewCardModal = React.memo(
       },
     })
 
-    const openModalType = open === CardsModals.CREATE || open === CardsModals.UPDATE
-    const name = open === CardsModals.CREATE ? 'Add New Card' : 'Edit Card'
     const data = ['text', 'image']
     const onSubmitHandler = handleSubmit(data => {
       const { Question, Answer } = data
 
-      if (createCard) {
-        createCard(Question, Answer)
-      }
-      if (editCard) {
-        editCard(Question, Answer)
-      }
+      createCard(Question, Answer)
     })
     const closeModal = () => {
       setModalState(null)
     }
 
     return (
-      <Modal
-        // open={open === (CardsModals.CREATE || CardsModals.UPDATE)}
-        open={openModalType}
-        setModalState={setModalState}
-      >
+      <Modal open={open === CardsModals.CREATE} setModalState={setModalState}>
         <Typography>{name}</Typography>
         <form onSubmit={onSubmitHandler}>
           <ControlledSelector
@@ -64,7 +53,6 @@ export const AddEditNewCardModal = React.memo(
           <ControlledInput name={'Answer'} label={'Answer'} control={control}></ControlledInput>
           <Button onClick={closeModal}>Cancel</Button>
           <Button type={'submit'} variant={'primary'}>
-            {/*onClick={addNewCardHandler}*/}
             <Typography variant={'h2'}>{name}</Typography>
           </Button>
         </form>
