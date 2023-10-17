@@ -2,8 +2,10 @@ import { ComponentPropsWithoutRef } from 'react'
 import { clsx } from 'clsx'
 import { Typography } from '@/components/ui/typography'
 import s from './Input.module.scss'
+import { toast } from 'react-toastify'
 
 export type AdditionalTypeToInput = {
+  type?: string
   leftSideIcon?: JSX.Element
   rightSideIcon?: JSX.Element
   errorMessage?: string
@@ -19,6 +21,7 @@ export type InputPropsType = ComponentPropsWithoutRef<'input'> & AdditionalTypeT
 
 export const Input = (props: InputPropsType) => {
   let {
+    type = 'text',
     name,
     label,
     errorMessage,
@@ -41,6 +44,34 @@ export const Input = (props: InputPropsType) => {
 
   const wrapperClassName = clsx(s.inputWrapper, className)
 
+  console.log(value)
+
+  if (type === 'file') {
+    const uploadHandler = () => {
+
+        console.log(value?.size)
+        if (value?.size < 40000) {
+          convertFileToBase64(value, (file64: string) => {
+            setFile(file64)
+          })
+        } else {
+          toast.error('File is to big, chose another file')
+        }
+      }
+    }
+
+    const convertFileToBase64 = (callBack: (value: string) => void) => {
+      const reader = new FileReader()
+
+      reader.onloadend = () => {
+        const file64 = reader.result as string
+
+        callBack(file64)
+      }
+      reader.readAsDataURL(value)
+    }
+  }
+
   return (
     <div className={wrapperClassName}>
       <Typography variant={'body2'} className={s.label}>
@@ -50,7 +81,7 @@ export const Input = (props: InputPropsType) => {
         <div className={leftSideIcon ? s.inputIcon : s.defaultInputWithoutIcon}>
           {leftSideIcon && <span className={s.searchIcon}>{leftSideIcon}</span>}
           <input
-            type="text"
+            type={type}
             placeholder={name}
             disabled={disabled}
             value={value}

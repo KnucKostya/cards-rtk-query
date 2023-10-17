@@ -1,6 +1,6 @@
 import s from './editCard.module.scss'
 // eslint-disable-next-line import/default
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Modal } from '@/components/ui/modal'
 import { Typography } from '@/components/ui/typography'
@@ -11,6 +11,7 @@ import { ControlledSelector } from '@/components/ui/controlled/controlledSelect'
 import { ControlledInput } from '@/components/ui/controlled/controlledInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newCardSchema } from '@/schemes'
+import { toast } from 'react-toastify'
 
 type EditCardModalPropsType = {
   open: CardsModals | null
@@ -21,7 +22,9 @@ type EditCardModalPropsType = {
 
 export const EditCardModal = React.memo(
   ({ open, setModalState, editCard, name }: EditCardModalPropsType) => {
-    const { control, handleSubmit } = useForm<NewCardField>({
+    const [fileFinal, setFile] = useState('')
+
+    const { control, handleSubmit, watch } = useForm<NewCardField>({
       resolver: zodResolver(newCardSchema),
       mode: 'onSubmit',
 
@@ -29,6 +32,8 @@ export const EditCardModal = React.memo(
         selectCardFormat: 'text',
       },
     })
+
+    const selectCardFormatValue = watch('selectCardFormat')
 
     const data = ['text', 'image']
     const onSubmitHandler = handleSubmit(data => {
@@ -53,12 +58,14 @@ export const EditCardModal = React.memo(
               selectData={data}
             ></ControlledSelector>
             <ControlledInput
+              type={selectCardFormatValue === 'text' ? 'text' : 'file'}
               className={s.input}
               name={'Question'}
               label={'Question'}
               control={control}
             ></ControlledInput>
             <ControlledInput
+              type={selectCardFormatValue === 'text' ? 'text' : 'file'}
               className={s.input}
               name={'Answer'}
               label={'Answer'}
