@@ -6,10 +6,25 @@
   align-items: flex-start;
   width: 542px;
 
-  .select {
+  .form {
     width: 100%;
-  }
-  .btContainer {
-    @include display-flex;
+
+    .quizContainer {
+      gap: 24px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      .select {
+        width: 93%;
+      }
+
+      .input {
+        margin-top: 3%;
+      }
+    }
+
+    .btContainer {
+      @include display-flex;
+    }
   }
 }
