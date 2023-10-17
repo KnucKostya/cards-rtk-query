@@ -72,6 +72,7 @@ export const DeckPack = () => {
     orderBy: sortedString,
     authorId,
   })
+
   console.log(data)
   const clearFilterHandler = () => {
     setName('')

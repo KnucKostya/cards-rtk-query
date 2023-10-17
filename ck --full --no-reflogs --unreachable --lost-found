@@ -1,0 +1,104 @@
+[33mf9cd888[m[33m ([m[1;36mHEAD -> [m[1;32mdev_copy[m[33m, [m[1;31morigin/dev_copy[m[33m)[m HEAD@{0}: checkout: moving from dev to dev_copy
+[33ma45ebc3[m[33m ([m[1;31mgithub/dev_copy[m[33m, [m[1;31mgithub/dev[m[33m, [m[1;32mdev[m[33m)[m HEAD@{1}: checkout: moving from dev_copy to dev
+[33mf9cd888[m[33m ([m[1;36mHEAD -> [m[1;32mdev_copy[m[33m, [m[1;31morigin/dev_copy[m[33m)[m HEAD@{2}: merge origin/dev_copy: Merge made by the 'ort' strategy.
+[33m94421d6[m HEAD@{3}: commit: added separated CardsTable component
+[33ma45ebc3[m[33m ([m[1;31mgithub/dev_copy[m[33m, [m[1;31mgithub/dev[m[33m, [m[1;32mdev[m[33m)[m HEAD@{4}: reset: moving to a45ebc3d968062fc10f5ebacfc55075edcc58c8b
+[33m96c9e75[m HEAD@{5}: rebase (finish): returning to refs/heads/dev_copy
+[33m96c9e75[m HEAD@{6}: rebase (start): checkout 96c9e75fc8552a45b99ba4b83c17c67b4888ad3c
+[33m3090f90[m HEAD@{7}: commit: added separated CardsTable component
+[33m96c9e75[m HEAD@{8}: commit: added drop down menu in cards page for changing/deleting,learning pack,
+[33ma45ebc3[m[33m ([m[1;31mgithub/dev_copy[m[33m, [m[1;31mgithub/dev[m[33m, [m[1;32mdev[m[33m)[m HEAD@{9}: checkout: moving from dev to dev_copy
+[33ma45ebc3[m[33m ([m[1;31mgithub/dev_copy[m[33m, [m[1;31mgithub/dev[m[33m, [m[1;32mdev[m[33m)[m HEAD@{10}: merge dev_copy: Fast-forward
+[33m7c0aec2[m HEAD@{11}: checkout: moving from dev_copy to dev
+[33ma45ebc3[m[33m ([m[1;31mgithub/dev_copy[m[33m, [m[1;31mgithub/dev[m[33m, [m[1;32mdev[m[33m)[m HEAD@{12}: commit: added modal for deleting card
+[33mfff46a6[m HEAD@{13}: commit: added modal for deleting card
+[33me29a78f[m HEAD@{14}: commit: raw layout of add new card modal, and done form control for this modal
+[33m3491e87[m HEAD@{15}: checkout: moving from dev_copy to dev_copy
+[33m3491e87[m HEAD@{16}: branch: Reset to origin/dev_copy
+[33m3491e87[m HEAD@{17}: commit: added possibility to add delete card(raw),
+[33m92dee24[m HEAD@{18}: commit: added possibility to add new card(raw), added edit/delete icon for actions column
+[33mae63b6e[m HEAD@{19}: commit: added search elements in incoming data of cards
+[33m6ff423a[m HEAD@{20}: commit: added table data, created rtk query api for cards, added data from backend to layout,changed route to decks
+[33m7c0aec2[m HEAD@{21}: merge dev: Fast-forward
+[33m202712c[m HEAD@{22}: checkout: moving from dev to dev_copy
+[33m202712c[m HEAD@{23}: commit: raw cards page layout
+[33m66402c0[m HEAD@{24}: checkout: moving from dev_copy to dev
+[33m08d106b[m HEAD@{25}: checkout: moving from dev to dev_copy
+[33m66402c0[m HEAD@{26}: commit: raw cards page layout
+[33m08d106b[m HEAD@{27}: checkout: moving from dev_copy to dev
+[33m08d106b[m HEAD@{28}: merge dev: Fast-forward
+[33m1f3cfa2[m HEAD@{29}: checkout: moving from dev to dev_copy
+[33m08d106b[m HEAD@{30}: merge origin/dev: Fast-forward
+[33m1f3cfa2[m HEAD@{31}: checkout: moving from dev_copy to dev
+[33m1f3cfa2[m HEAD@{32}: checkout: moving from dev to dev_copy
+[33m1f3cfa2[m HEAD@{33}: checkout: moving from dev_copy to dev
+[33m282ccd3[m HEAD@{34}: checkout: moving from dev to dev_copy
+[33m282ccd3[m HEAD@{35}: merge dev_copy: Fast-forward
+[33m9da40a8[m HEAD@{36}: checkout: moving from dev_copy to dev
+[33m282ccd3[m HEAD@{37}: commit: added semantic where it possible in ui native components
+[33meaa87af[m HEAD@{38}: commit: added semantic tags for screen readers - for auth components
+[33m9da40a8[m HEAD@{39}: checkout: moving from dev to dev_copy
+[33m9da40a8[m HEAD@{40}: merge dev_copy: Fast-forward
+[33m8a686e2[m HEAD@{41}: checkout: moving from dev_copy to dev
+[33m9da40a8[m HEAD@{42}: commit: added mixins to the all scss files where it possible
+[33m8a686e2[m HEAD@{43}: Branch: renamed refs/heads/dev_)copy to refs/heads/dev_copy
+[33m8a686e2[m HEAD@{45}: checkout: moving from dev to dev_)copy
+[33m8a686e2[m HEAD@{46}: checkout: moving from master to dev
+[33mbccd935[m[33m ([m[1;31morigin/master[m[33m, [m[1;31mgithub/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{47}: merge dev: Merge made by the 'ort' strategy.
+[33m8854dbb[m HEAD@{48}: checkout: moving from dev to master
+[33m1dbb460[m HEAD@{49}: commit: added styled condition for changing name value in profile
+[33me80197f[m HEAD@{50}: merge origin/dev: Merge made by the 'ort' strategy.
+[33m5f4604f[m HEAD@{51}: commit: added autofocus fitcha, when user clicked "edit name"
+[33m277e14f[m HEAD@{52}: commit: fixed layout for sign in error
+[33m11e0d0b[m HEAD@{53}: merge validation-schemas: Merge made by the 'ort' strategy.
+[33m3d303ae[m HEAD@{54}: checkout: moving from validation-schemas to dev
+[33m9f49627[m HEAD@{55}: commit: added validation handling for login and register form's
+[33m7629340[m HEAD@{56}: checkout: moving from dev to validation-schemas
+[33m7629340[m HEAD@{57}: commit: added mixins into file,
+[33me69a4db[m HEAD@{58}: merge origin/dev: Fast-forward
+[33m6930445[m HEAD@{59}: merge profile-info-fitcha: Fast-forward
+[33m9400bb3[m HEAD@{60}: checkout: moving from profile-info-fitcha to dev
+[33m6930445[m HEAD@{61}: commit: fixed profile info, sign up layout,login
+[33m47a4ebd[m HEAD@{62}: commit: removed layot bug from input with icons in it
+[33mc18d90a[m HEAD@{63}: commit (merge): Merge branch 'dev' into profile-info-fitcha
+[33m231604f[m HEAD@{64}: merge dev: updating HEAD
+[33m231604f[m HEAD@{65}: commit: profile info functionality for onBlur
+[33m9e682a5[m HEAD@{66}: commit: profile info layout
+[33m826e7f5[m HEAD@{67}: checkout: moving from dev to profile-info-fitcha
+[33m826e7f5[m HEAD@{68}: merge login-form-feature: Merge made by the 'ort' strategy.
+[33me0e825d[m HEAD@{69}: checkout: moving from login-form-feature to dev
+[33m82ecdd9[m HEAD@{70}: commit: completed LoginForm fitcha
+[33m5f0ecc4[m HEAD@{71}: checkout: moving from master to login-form-feature
+[33m8854dbb[m HEAD@{72}: merge dev: Merge made by the 'ort' strategy.
+[33mf22d8db[m HEAD@{73}: checkout: moving from dev to master
+[33me0e825d[m HEAD@{74}: merge login-form-feature: Merge made by the 'ort' strategy.
+[33m815d808[m HEAD@{75}: checkout: moving from login-form-feature to dev
+[33m5f0ecc4[m HEAD@{76}: commit (merge): Merge branch 'dev' into login-form-feature
+[33m446bdd5[m HEAD@{77}: checkout: moving from dev to login-form-feature
+[33m1e7eccc[m HEAD@{78}: checkout: moving from login-form-feature to dev
+[33m446bdd5[m HEAD@{79}: commit: fixed input error/label/disable layout
+[33ma2b485a[m HEAD@{80}: checkout: moving from dev to login-form-feature
+[33ma2b485a[m HEAD@{81}: commit: --
+[33m51517fe[m HEAD@{82}: commit: --
+[33m9190f75[m HEAD@{83}: commit: added index.ts, Omited onChange, name from Input typo incoming props, files for types
+[33m3dcd06f[m HEAD@{84}: merge origin/dev: Fast-forward
+[33m893a6e9[m HEAD@{85}: merge dev_copy: Merge made by the 'ort' strategy.
+[33m5c01bc2[m HEAD@{86}: checkout: moving from dev_copy to dev
+[33m8b71563[m HEAD@{87}: commit: added control-input
+[33mb39a1e1[m HEAD@{88}: checkout: moving from dev to dev_copy
+[33mb39a1e1[m HEAD@{89}: commit: fixed layout in select
+[33m3772411[m HEAD@{90}: commit: fixed layout in select
+[33m1c60e90[m HEAD@{91}: merge origin/dev: Fast-forward
+[33m18186f5[m HEAD@{92}: commit: added mapping data in select
+[33m0728e79[m HEAD@{93}: checkout: moving from master to dev
+[33mf22d8db[m HEAD@{94}: merge dev: Merge made by the 'ort' strategy.
+[33m7aa4076[m HEAD@{95}: checkout: moving from dev to master
+[33m0728e79[m HEAD@{96}: commit: added selectName selectData props
+[33m4e916ed[m HEAD@{97}: commit: added mixins, refactored files
+[33m7acffd7[m HEAD@{98}: merge select_fithca: Fast-forward
+[33mb80a9f3[m HEAD@{99}: checkout: moving from select_fithca to dev
+[33m7acffd7[m HEAD@{100}: commit: fixed bugs with layout, added label, added possibility to disable component
+[33mc85e20d[m HEAD@{101}: commit: added correct layout for select
+[33mb80a9f3[m HEAD@{102}: merge dev: Fast-forward
+[33mcabb181[m HEAD@{103}: checkout: moving from dev to select_fithca
+[33mb80a9f3[m HEAD@{104}: c

@@ -1,3 +1,4 @@
+import s from './editCard.module.scss'
 // eslint-disable-next-line import/default
 import React from 'react'
 
@@ -33,6 +34,8 @@ export const EditCardModal = React.memo(
     const onSubmitHandler = handleSubmit(data => {
       const { Question, Answer } = data
 
+      console.log(Question, Answer)
+      console.log(Question, Answer)
       editCard(Question, Answer)
     })
     const closeModal = () => {
@@ -40,10 +43,11 @@ export const EditCardModal = React.memo(
     }
 
     return (
-      <Modal open={open === CardsModals.UPDATE} setModalState={setModalState}>
+      <Modal className={s.modal} open={open === CardsModals.UPDATE} setModalState={setModalState}>
         <Typography>{name}</Typography>
         <form onSubmit={onSubmitHandler}>
           <ControlledSelector
+            triggerClassName={s.select}
             label={'Chose a question format'}
             name={'selectCardFormat'}
             control={control}
@@ -51,10 +55,14 @@ export const EditCardModal = React.memo(
           ></ControlledSelector>
           <ControlledInput name={'Question'} label={'Question'} control={control}></ControlledInput>
           <ControlledInput name={'Answer'} label={'Answer'} control={control}></ControlledInput>
-          <Button onClick={closeModal}>Cancel</Button>
-          <Button type={'submit'} variant={'primary'}>
-            <Typography variant={'h2'}>{name}</Typography>
-          </Button>
+          <div className={s.btContainer}>
+            <Button onClick={closeModal}>
+              <Typography variant={'subtitle2'}>Cancel</Typography>
+            </Button>
+            <Button type={'submit'} variant={'primary'}>
+              <Typography variant={'subtitle2'}>{name}</Typography>
+            </Button>
+          </div>
         </form>
       </Modal>
     )

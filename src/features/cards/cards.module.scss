@@ -57,6 +57,10 @@
       width: 100%;
       margin-top: 33px;
 
+      .bt {
+        z-index: 0;
+      }
+
       .packName {
         display: flex;
         font-size: 22px;

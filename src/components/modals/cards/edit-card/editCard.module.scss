@@ -1,0 +1,15 @@
+@import '/src/styles/mixins';
+
+.modal {
+  @include display-column;
+
+  align-items: flex-start;
+  width: 542px;
+
+  .select {
+    width: 100%;
+  }
+  .btContainer {
+    @include display-flex;
+  }
+}

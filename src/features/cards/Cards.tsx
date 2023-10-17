@@ -29,7 +29,7 @@ export const Cards = memo(() => {
   const [itemsOnPage, setItemsOnPage] = useState(10)
   const [postCard] = usePostCardMutation({})
   const [editCard] = usePatchCardMutation({})
-  let temporaryPackId = 'clnoybj4l0yvtvo2qfif81vyp'
+  let temporaryPackId = 'clnozg7hb0yx1vo2q930xpcrg'
   const { data } = useGetCardsQuery({
     packId: temporaryPackId,
     currentPage,
@@ -55,12 +55,8 @@ export const Cards = memo(() => {
   })
 
   const addNewCardHandler = async (question: string, answer: string) => {
-    // console.log('answer', answer)
-    // console.log('question', question)
-    // console.log('temporaryPackId', temporaryPackId)
-    console.log('function add is called')
-
     const data = { answer, question, packId: temporaryPackId }
+
     console.log(data)
     try {
       await postCard(data)
@@ -71,7 +67,6 @@ export const Cards = memo(() => {
   }
 
   const editCardhandler = async (question: string, answer: string) => {
-    console.log('function edit is called')
     if (openModal === CardsModals.UPDATE) {
       try {
         await editCard({ question, answer, packId: itemData ? itemData.id : '' })
@@ -91,7 +86,7 @@ export const Cards = memo(() => {
     <div className={s.packContainer}>
       <div className={s.insideContainer}>
         <span>
-          <Link to={'/decks'} style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
             <label className={s.backToCards}>
               <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#ffffff' }} />
               <Typography className={s.backToPacks} variant={'body2'}>
@@ -109,7 +104,9 @@ export const Cards = memo(() => {
               {/*тут ^ будет коллбек по откртию модалок */}
             </span>
           </Typography>
-          <Button onClick={() => setModalState(CardsModals.CREATE)}>Add New Card</Button>
+          <Button className={s.bt} onClick={() => setModalState(CardsModals.CREATE)}>
+            Add New Card
+          </Button>
           <AddCardModal
             name={'Add New Card'}
             open={openModal}
