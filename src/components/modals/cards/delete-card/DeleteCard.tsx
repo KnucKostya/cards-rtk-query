@@ -31,13 +31,19 @@ export const DeleteCard = ({ open, cardId, cardQuestion, setModalState }: Delete
   }
 
   return (
-    <Modal open={open === CardsModals.DELETE} setModalState={setModalState}>
-      <Typography>Delete Card</Typography>
+    <Modal
+      className={s.modalWindow}
+      open={open === CardsModals.DELETE}
+      setModalState={setModalState}
+    >
+      <Typography className={s.header}>Delete Card</Typography>
       <Dialog.Description className={s.dialogDescription}>
         {`Do you really want to remove card - ${cardQuestion}?`}
       </Dialog.Description>
-      <Button onClick={closeModal}>Cancel</Button>
-      <Button onClick={deleteHandler}>Delete Card</Button>
+      <div className={s.buttonContainer}>
+        <Button onClick={closeModal}>Cancel</Button>
+        <Button onClick={deleteHandler}>Delete Card</Button>
+      </div>
     </Modal>
   )
 }

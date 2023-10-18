@@ -1,6 +1,6 @@
 import s from './editCard.module.scss'
 // eslint-disable-next-line import/default
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Modal } from '@/components/ui/modal'
 import { Typography } from '@/components/ui/typography'
@@ -11,7 +11,6 @@ import { ControlledSelector } from '@/components/ui/controlled/controlledSelect'
 import { ControlledInput } from '@/components/ui/controlled/controlledInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newCardSchema } from '@/schemes'
-import { toast } from 'react-toastify'
 
 type EditCardModalPropsType = {
   open: CardsModals | null
@@ -22,8 +21,6 @@ type EditCardModalPropsType = {
 
 export const EditCardModal = React.memo(
   ({ open, setModalState, editCard, name }: EditCardModalPropsType) => {
-    const [fileFinal, setFile] = useState('')
-
     const { control, handleSubmit, watch } = useForm<NewCardField>({
       resolver: zodResolver(newCardSchema),
       mode: 'onSubmit',

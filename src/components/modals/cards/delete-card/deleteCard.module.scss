@@ -1,6 +1,33 @@
-.dialogDescription {
-  margin: 10px 0 20px;
-  color: var(--mauve-11);
-  font-size: 15px;
-  line-height: 1.5;
+@import '/src/styles/mixins';
+
+.modalWindow {
+  @include display-column;
+
+  width: 542px;
+
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 542px;
+    padding: 0 24px;
+  }
+
+  .dialogDescription {
+    display: flex;
+    gap: 434px;
+    align-items: flex-start;
+
+    width: 542px;
+    padding: 18px 24px;
+
+    border-top: 1px solid var(--color-dark-300);
+  }
+
+  .buttonContainer {
+    @include display-flex;
+
+    width: 100%;
+  }
 }

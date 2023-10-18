@@ -1,8 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react'
 import { clsx } from 'clsx'
 import { Typography } from '@/components/ui/typography'
+import { ComponentPropsWithoutRef } from 'react'
 import s from './Input.module.scss'
-import { toast } from 'react-toastify'
 
 export type AdditionalTypeToInput = {
   type?: string
@@ -28,7 +27,7 @@ export const Input = (props: InputPropsType) => {
     leftSideIcon,
     rightSideIcon,
     disabled,
-    value,
+    value = '',
     onChange,
     className,
     callBack,
@@ -43,34 +42,6 @@ export const Input = (props: InputPropsType) => {
   const inputClassName = clsx(s.input, errorMessage && s.errorInput)
 
   const wrapperClassName = clsx(s.inputWrapper, className)
-
-  console.log(value)
-
-  if (type === 'file') {
-    const uploadHandler = () => {
-
-        console.log(value?.size)
-        if (value?.size < 40000) {
-          convertFileToBase64(value, (file64: string) => {
-            setFile(file64)
-          })
-        } else {
-          toast.error('File is to big, chose another file')
-        }
-      }
-    }
-
-    const convertFileToBase64 = (callBack: (value: string) => void) => {
-      const reader = new FileReader()
-
-      reader.onloadend = () => {
-        const file64 = reader.result as string
-
-        callBack(file64)
-      }
-      reader.readAsDataURL(value)
-    }
-  }
 
   return (
     <div className={wrapperClassName}>
