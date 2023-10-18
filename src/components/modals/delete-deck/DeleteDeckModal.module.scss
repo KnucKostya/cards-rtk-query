@@ -1,0 +1,32 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 542px;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 60px;
+    left: 0;
+
+    width: 100%;
+
+    border: 1px solid var(--color-dark-500);
+  }
+}
+
+.buttonArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 36px;
+}
+
+.subtitle {
+  margin-bottom: 28px;
+}

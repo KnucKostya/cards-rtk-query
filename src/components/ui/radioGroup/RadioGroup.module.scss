@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 .root {
   display: flex;
   flex-direction: column;
@@ -6,25 +8,21 @@
 }
 
 .label {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 3px;
-  align-items: center;
+  @include flex-row-reverse-center(3px);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .radioItemWrapper {
+  @include flex-row-center;
+
+  @include size(36px, 36px);
+
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 36px;
-  height: 36px;
-
   background-color: rgb(var(--color-dark-100) 0);
   border-radius: 100%;
-
   transition: 200ms;
 
   &:hover {
@@ -55,10 +53,9 @@
 }
 
 .item {
-  cursor: pointer;
+  @include size(16px, 16px);
 
-  width: 16px;
-  height: 16px;
+  cursor: pointer;
 
   appearance: none;
   background-color: transparent;
@@ -72,20 +69,18 @@
 }
 
 .indicator {
+  @include flex-row-center;
+
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &::after {
+    @include size(8px, 8px);
+
     content: '';
 
     position: absolute;
 
     display: block;
-
-    width: 8px;
-    height: 8px;
 
     background-color: var(--color-accent-500);
     border-radius: 50%;

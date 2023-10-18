@@ -4,7 +4,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 33px 36px 60px;
+
+  margin-top: 36px;
+  padding: 33px 36px 29px;
 
   .signTypography {
     display: flex;
@@ -23,6 +25,11 @@
     );
   }
 
+  .logInForm {
+    display: flex;
+    flex-direction: column;
+  }
+
   .input {
     margin-top: 5%;
   }
@@ -38,12 +45,16 @@
   }
 
   .forgotTypography {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
+    align-self: flex-end;
     margin-top: 1%;
     margin-bottom: 15%;
+    text-decoration-line: none;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-accent-500);
+      text-decoration-line: underline;
+    }
   }
 
   .button {
@@ -63,18 +74,14 @@
 
     .question {
       margin-top: 5%;
-
-      font-family: var(--font-family-primary);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 24px;
-      color: var(--color-light-700);
+      color: var(--color-light-900);
       word-wrap: break-word;
     }
 
     .registerLink {
       margin-top: 5%;
       margin-bottom: 5%;
+      color: var(--color-accent-500);
       text-decoration-line: underline;
     }
   }

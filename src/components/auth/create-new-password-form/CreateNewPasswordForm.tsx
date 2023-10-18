@@ -28,6 +28,7 @@ export const CreateNewPasswordForm = (props: Props) => {
   } = useForm<CreateNewPasswordFields>({
     resolver: zodResolver(createNewPasswordSchema),
     mode: 'onSubmit',
+    defaultValues: { password: '' },
   })
 
   const onSubmitHandler = handleSubmit(data => {
@@ -39,12 +40,18 @@ export const CreateNewPasswordForm = (props: Props) => {
   const inputType = showPassword ? 'text' : 'password'
 
   return (
-    <Card className={s.newPasswordCard}>
+    <Card
+      className={s.newPasswordCard}
+      aria-label={
+        'form that helps you create a new password that will be sent into your email address'
+      }
+    >
       <form className={s.form} onSubmit={onSubmitHandler}>
         <Typography className={s.title} variant={'large'}>
           Create new password
         </Typography>
         <ControlledInput
+          aria-label={'enter new password'}
           type={inputType}
           className={s.input}
           control={control}
@@ -58,7 +65,12 @@ export const CreateNewPasswordForm = (props: Props) => {
         <Typography className={s.subtitle} variant={'body2'}>
           Create new password and we will send you further instructions to email
         </Typography>
-        <Button type={'submit'} variant={'primary'} fullWidth={true}>
+        <Button
+          type={'submit'}
+          variant={'primary'}
+          fullWidth={true}
+          aria-label={'submit password changing'}
+        >
           <Typography variant={'subtitle2'}>Create New Password</Typography>
         </Button>
       </form>

@@ -10,7 +10,13 @@ export const Card = forwardRef<HTMLDivElement, Props>((props, ref) => {
   const finalCardClassName = clsx(s.card, className)
 
   return (
-    <div ref={ref} className={finalCardClassName} {...rest}>
+    <div
+      ref={ref}
+      className={finalCardClassName}
+      role={'region'}
+      aria-label={'card content'}
+      {...rest}
+    >
       {children}
     </div>
   )

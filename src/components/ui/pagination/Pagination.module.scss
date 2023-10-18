@@ -1,22 +1,15 @@
+@import '@/styles/mixins';
+
 .paginationContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
+  @include flex-row-center(12px);
 
   list-style-type: none;
 
   .paginationArrow {
+    @include flex-row-center;
+    @include size(24px, 24px);
+
     position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 24px;
-    height: 24px;
-
     border-radius: 2px;
 
     &:hover {
@@ -25,19 +18,16 @@
     }
 
     .arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-row-center;
 
       &::before {
+        @include size(7px, 7px);
+
         content: '';
 
         position: absolute;
 
         display: block;
-
-        width: 7px;
-        height: 7px;
 
         border-top: 1.9px solid var(--color-light-100);
         border-right: 1.9px solid var(--color-light-100);
@@ -68,10 +58,9 @@
   }
 
   .dots {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
+    @include flex-row-center;
+
+    @include size(24px, auto);
 
     &.dots:hover {
       cursor: default;
@@ -80,12 +69,8 @@
   }
 
   .paginationItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 24px;
-    height: 24px;
+    @include flex-row-center;
+    @include size(24px, 24px);
 
     background-color: transparent;
     border-radius: 2px;
@@ -101,10 +86,7 @@
   }
 
   .settings {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    @include flex-row-center(10px);
 
     margin-left: 15px;
   }

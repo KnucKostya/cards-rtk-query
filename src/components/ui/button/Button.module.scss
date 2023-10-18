@@ -1,25 +1,43 @@
+@import '@/styles/mixins';
+
 .button {
-  padding: 6px 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  color: var(color-light-100);
-  border-radius: 4px;
-  border: 2px solid;
-  box-shadow: 0 4px 18px 0 rgba(140, 97, 255, 0.35);
+  @include display-flex;
+
   cursor: pointer;
+
+  position: relative;
+  z-index: 1;
+
+  gap: 10px;
+  justify-content: center;
+
+  padding: 6px 28px;
+
+  border: 2px solid;
+  border-radius: 4px;
   outline: 0;
   outline-offset: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
 }
 
 .primary {
   background-color: var(--color-accent-500);
   border-color: var(--color-accent-500);
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+
+    background: linear-gradient(45deg, rgb(140 97 255 / 100%) 0%, rgb(140 97 255 / 100%) 100%);
+    background-size: 400%;
+    filter: blur(5px);
+  }
 
   &:active {
     background-color: var(--color-accent-700);
@@ -37,15 +55,30 @@
   }
 
   &:disabled {
+    color: var(--color-light-900);
     background-color: var(--color-accent-900);
     border-color: var(--color-accent-900);
-    color: var(--color-light-900);
   }
 }
 
 .secondary {
   background-color: var(--color-dark-300);
   border-color: var(--color-dark-300);
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+
+    background: linear-gradient(45deg, rgb(76 76 76 / 100%) 0%, rgb(76 76 76 / 100%) 100%);
+    filter: blur(5px);
+  }
 
   &:active {
     background-color: var(--color-dark-500);
@@ -63,27 +96,27 @@
   }
 
   &:disabled {
+    color: var(--color-light-900);
     background-color: var(--color-dark-300);
     border-color: var(--color-dark-300);
-    color: var(--color-light-900);
   }
 }
 
 .tertiary {
+  color: var(--color-accent-500);
   background-color: transparent;
   border-color: var(--color-accent-500);
-  color: var(--color-accent-500);
 
   &:active {
+    color: var(--color-accent-500);
     background-color: var(--color-dark-900);
     border-color: var(--color-dark-700);
-    color: var(--color-accent-500);
   }
 
   &:hover {
+    color: var(--color-accent-500);
     background-color: var(--color-dark-500);
     border-color: var(--color-accent-700);
-    color: var(--color-accent-500);
   }
 
   &:focus {
@@ -93,17 +126,20 @@
   }
 
   &:disabled {
+    color: var(--color-accent-900);
     background-color: transparent;
     border-color: var(--color-accent-900);
-    color: var(--color-accent-900);
   }
 }
 
 .link {
   padding: 6px 0;
+
+  color: var(--color-accent-500);
+  text-shadow: 1px 1px #8c61ff59;
+
   background-color: transparent;
   border-color: transparent;
-  color: var(--color-accent-500);
   box-shadow: none;
 
   &:hover {
@@ -127,4 +163,5 @@
 
 .fullWidth {
   width: 100%;
+  padding: 6px 0;
 }

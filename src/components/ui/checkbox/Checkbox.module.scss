@@ -1,9 +1,7 @@
+@import '@/styles/mixins';
+
 .label {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 3px;
-  align-items: center;
-  justify-content: center;
+  @include flex-row-reverse-center(3px);
 
   color: var(--color-light-100);
 
@@ -13,15 +11,10 @@
 }
 
 .root {
+  @include size(18px, 18px);
+  @include flex-row-center;
+
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 18px;
-  height: 18px;
-
   background-color: transparent;
   border: 2px solid var(--color-light-900);
   border-radius: 2px;
@@ -33,9 +26,7 @@
 }
 
 .indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-row-center;
 
   &[data-disabled] svg path {
     fill: var(--color-dark-100);
@@ -47,18 +38,12 @@
 }
 
 .checkboxWrapper {
+  @include flex-row-center;
+  @include size(36px, 36px);
+
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 36px;
-  height: 36px;
-
   background-color: rgb(var(--color-dark-100) 0);
   border-radius: 100%;
-
   transition: 200ms;
 
   &:hover {

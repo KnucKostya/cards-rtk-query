@@ -1,0 +1,13 @@
+.iconsCell {
+  width: min-content;
+  text-align: end;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

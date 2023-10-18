@@ -6,6 +6,14 @@
   display: block;
 }
 
+@mixin flex($flexDirection: row, $alignItems, $justifyContent, $gap: 0) {
+  display: flex;
+  flex-direction: $flexDirection;
+  gap: $gap;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+
 @mixin display-flex($display: flex) {
   display: $display;
   align-items: center;
@@ -31,6 +39,28 @@
 @mixin size($width, $height) {
   width: $width;
   height: $height;
+}
+
+@mixin typography-text-style($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin flex-row-center($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row-reverse-center($gap: 0) {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: $gap;
+  align-items: center;
+  justify-content: center;
 }
 
 // display:

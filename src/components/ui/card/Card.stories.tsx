@@ -9,7 +9,7 @@ import { RadioGroup } from '@/components/ui/radioGroup'
 import { Typography } from '@/components/ui/typography'
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Components/CardPage',
   component: Card,
   tags: ['autodocs'],
   parameters: {

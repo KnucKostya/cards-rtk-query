@@ -1,0 +1,15 @@
+@import '/src/styles/mixins';
+
+.emptyPack {
+  @include display-column;
+
+  margin-top: 50px;
+
+  .typography {
+    @include custom-text-style('Roboto', 16px, 400, 24px, var(--color-dark-100));
+  }
+
+  .bt {
+    margin-top: 30px;
+  }
+}

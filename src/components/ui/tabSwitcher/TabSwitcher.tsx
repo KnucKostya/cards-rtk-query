@@ -1,4 +1,5 @@
 import * as Tabs from '@radix-ui/react-tabs'
+import { Typography } from '@/components/ui/typography'
 import s from './TabSwitcher.module.scss'
 
 export type TabType = {
@@ -10,18 +11,22 @@ export type TabType = {
 }
 
 export type TabSwitcherProps = {
+  label?: string
   orientation?: 'vertical' | 'horizontal'
   tabs: TabType[]
   setActiveTab?: (id: string) => void
 }
 
 export const TabSwitcher = (props: TabSwitcherProps) => {
-  const { orientation = 'horizontal', tabs, setActiveTab } = props
+  const { orientation = 'horizontal', tabs, setActiveTab, label } = props
 
   const defaultTab = tabs.find(tab => tab.defaultTab)
 
   return (
-    <Tabs.Root defaultValue={defaultTab?.id} orientation={orientation}>
+    <Tabs.Root className={s.root} defaultValue={defaultTab?.id} orientation={orientation}>
+      <Typography className={s.label} variant={'body2'}>
+        {label}
+      </Typography>
       <Tabs.List aria-label="tabs">
         {tabs.map((tab, index, tabs) => {
           const finalClassName = `${s.tab}
@@ -39,7 +44,7 @@ export const TabSwitcher = (props: TabSwitcherProps) => {
               onClick={setActiveTab ? () => setActiveTab(tab.id) : undefined}
               disabled={tab.disabledTab}
             >
-              {tab.title}
+              <Typography variant={'body1'}>{tab.title}</Typography>
             </Tabs.Trigger>
           )
         })}

@@ -1,0 +1,17 @@
+.table {
+  margin-top: 24px;
+
+  .actionTableCell {
+    width: 100px;
+    padding: 0;
+  }
+
+  .actions {
+    text-align: end;
+
+    .icon {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  }
+}

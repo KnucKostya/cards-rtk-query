@@ -1,6 +1,18 @@
+@import '@/styles/mixins';
+
 [data-orientation='horizontal'] {
   display: inline-flex;
   flex-direction: row;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  align-self: flex-start;
 }
 
 [data-orientation='vertical'] {
@@ -10,15 +22,7 @@
 
 .tab {
   cursor: pointer;
-
-  padding: 6px 24px;
-
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-m);
-  color: var(--color-light-100);
-
+  padding: 5px 24px;
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
 

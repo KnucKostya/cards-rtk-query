@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Typography } from '@/components/ui/typography'
-import cardsLogo from '@/images/cardsLogo.png'
+import cardsLogo from '@/assets/icons/cardsLogo.png'
 import s from './personalInfo.module.scss'
 
 export const PersonalInformation = () => {
@@ -25,7 +25,7 @@ export const PersonalInformation = () => {
   }
 
   return (
-    <Card className={s.container}>
+    <Card className={s.container} aria-label={'profile information'}>
       <Typography variant={'h1'} className={s.typoInfo}>
         Personal Information
       </Typography>
@@ -33,6 +33,7 @@ export const PersonalInformation = () => {
         <img className={s.userPhoto} src={cardsLogo} alt="user-photo" />
         <span className={s.editLogo}>
           <FontAwesomeIcon
+            aria-label={'click to edit your profile photo'}
             icon={faPenToSquare}
             onClick={editIconHandler}
             style={{ cursor: 'pointer' }}
@@ -41,6 +42,7 @@ export const PersonalInformation = () => {
       </div>
       {edit ? (
         <Input
+          aria-label={'double click and rename your profile name'}
           className={s.input}
           name={'Nick name'}
           autoFocus={true}
@@ -59,14 +61,19 @@ export const PersonalInformation = () => {
       )}
 
       {edit ? (
-        <Button className={s.button} variant={'primary'} fullWidth={true}>
+        <Button
+          aria-label={'save changes'}
+          className={s.button}
+          variant={'primary'}
+          fullWidth={true}
+        >
           <>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </>
           <Typography variant={'subtitle2'}>Save Changes</Typography>
         </Button>
       ) : (
-        <Button className={s.button} variant={'secondary'} fullWidth={true}>
+        <Button aria-label={'logout'} className={s.button} variant={'secondary'} fullWidth={true}>
           <>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </>

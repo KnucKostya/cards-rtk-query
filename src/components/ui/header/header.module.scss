@@ -1,23 +1,46 @@
 @import '@/styles/mixins';
 
 .header {
-  @include size(100vh, 60px); //TODO can be error with adaptive
-
-  background-color: var(--color-dark-700);
-}
-
-.logo {
-  height: 50px;
-  margin-left: 7%;
-}
-
-.container {
+  @include size(100vw, 60px); //TODO can be error with adaptive
   @include display-flex;
 
-  margin: 0 10%;
-}
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-dark-700);
 
-.userContainer {
-  display: flex;
-  align-items: center;
+  .container {
+    @include display-flex;
+
+    width: 1006px;
+    height: 100%;
+    margin: 0 auto;
+
+    .iconAndNameWrapper {
+      @include flex-row-center(10px);
+
+      cursor: pointer;
+      height: 100%;
+    }
+
+    .logo {
+      height: 50px;
+      margin-left: 7%;
+    }
+
+    .userContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .user {
+        cursor: pointer;
+
+        .userName {
+          border-bottom: 1px dashed var(--color-light-100);
+        }
+      }
+    }
+  }
 }

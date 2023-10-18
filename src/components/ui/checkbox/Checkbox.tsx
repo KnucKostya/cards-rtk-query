@@ -14,17 +14,17 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
   (props, ref) => {
     const { checked, disabled, label, onChange, className, ...rest } = props
 
-    const finalClassName = clsx(s.root, className)
+    const finalClassName = clsx(s.label, className)
 
     return (
-      <Label.Root className={s.label}>
+      <Label.Root className={finalClassName}>
         <Typography variant={'body2'} className={!disabled ? s.textColor : s.disabledTextColor}>
           {label}
         </Typography>
         <div className={s.checkboxWrapper}>
           <CheckboxRadix.Root
             ref={ref}
-            className={finalClassName}
+            className={s.root}
             checked={checked}
             disabled={disabled}
             {...rest}

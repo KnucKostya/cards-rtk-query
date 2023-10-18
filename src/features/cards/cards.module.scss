@@ -1,0 +1,84 @@
+@import '/src/styles/mixins';
+
+.packContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 1000px;
+  height: auto;
+  padding: 5%;
+
+  background-color: var(--color-dark-900);
+  border-radius: 10px;
+
+  .insideContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    padding: 20px;
+
+    .packImg {
+      @include size(170px, 107px);
+
+      margin-top: 15px;
+    }
+
+    .backToCards {
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-family: var(--font-family-primary);
+      font-size: 20px;
+
+      .backToPacks {
+        @include custom-text-style(
+          var(--font-family-primary),
+          14px,
+          400,
+          24px,
+          var(--color-light-100)
+        );
+
+        position: absolute;
+        margin-left: 10px;
+      }
+    }
+
+    .packAddName {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      width: 100%;
+      margin-top: 33px;
+
+      .bt {
+        z-index: 0;
+      }
+
+      .packName {
+        display: flex;
+        font-size: 22px;
+        font-weight: 600;
+      }
+    }
+
+    .searchContainer {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .firstContainer {
+      align-self: flex-start;
+    }
+
+    .secondContainer {
+      align-self: center;
+    }
+  }
+}

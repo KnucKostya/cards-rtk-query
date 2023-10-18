@@ -1,23 +1,30 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { clsx } from 'clsx'
 import s from './Modal.module.scss'
 
-export type ModalPropsType = {
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-  children?: ReactNode
+type AdditionalModalType = {
+  setModalState: (value: any) => void
 }
 
-export const Modal = ({ open, onOpenChange, children }: ModalPropsType) => {
+export type ModalProps = ComponentPropsWithoutRef<typeof Dialog.Root> &
+  ComponentPropsWithoutRef<typeof Dialog.Content> &
+  AdditionalModalType
+
+export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, ModalProps>((props, ref) => {
+  const { children, className, title, setModalState, ...rest } = props
+
+  const contentClassName = clsx(s.content, className)
+
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root {...rest}>
       <Dialog.Portal>
         <Dialog.Overlay className={s.overlay} />
-        <Dialog.Content className={s.content}>
+        <Dialog.Content ref={ref} className={contentClassName} {...rest}>
           {children}
-          <Dialog.Close className={s.closeBtn} />
+          <Dialog.Close className={s.closeBtn} onClick={() => setModalState(null)} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   )
-}
+})
