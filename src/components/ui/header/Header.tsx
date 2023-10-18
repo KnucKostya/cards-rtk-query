@@ -31,8 +31,11 @@ export const Header = ({ isAuth }: HeaderPropsType) => {
           {isAuth ? (
             // add aria label
             <>
-              <span className={s.userName}>user</span>
-              <Icon srcIcon={unknownUser} alt={'user photo'} />
+              <span className={s.user}>
+                <span className={s.userName}>user</span>
+                <Icon srcIcon={unknownUser} alt={'user photo'} />
+              </span>
+
               {/*temporary button to handle log out flow*/}
               <Button onClick={() => logOut()}>
                 <Typography variant={'subtitle2'}>Log Out</Typography>

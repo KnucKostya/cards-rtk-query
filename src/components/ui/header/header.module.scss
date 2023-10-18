@@ -33,10 +33,14 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-    }
 
-    .userName {
-      border-bottom: 1px dashed var(--color-light-100);
+      .user {
+        cursor: pointer;
+
+        .userName {
+          border-bottom: 1px dashed var(--color-light-100);
+        }
+      }
     }
   }
 }

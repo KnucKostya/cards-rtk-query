@@ -20,6 +20,7 @@ import { CardData } from '@/features/cards/Types.ts'
 import { PackOptions } from '@/components/modals/cards/pack-options/PackOptions.tsx'
 import CardsTable from '@/features/cards/cards-table/CardsTable.tsx'
 import { AddCardModal } from '@/components/modals/cards/add-new-card/AddNewCard.tsx'
+import { EmptyPack } from '@/features/cards/EmptyPack/EmptyPack.tsx'
 
 export const Cards = memo(() => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -29,7 +30,7 @@ export const Cards = memo(() => {
   const [itemsOnPage, setItemsOnPage] = useState(10)
   const [postCard] = usePostCardMutation({})
   const [editCard] = usePatchCardMutation({})
-  let temporaryPackId = 'clnozg7hb0yx1vo2q930xpcrg'
+  let temporaryPackId = 'clnw7li1r127rvo2q2df0d1ut'
   const { data } = useGetCardsQuery({
     packId: temporaryPackId,
     currentPage,
@@ -82,55 +83,104 @@ export const Cards = memo(() => {
     setItemData(item)
   }
 
+  console.log(inputSearchData)
+
   return (
     <div className={s.packContainer}>
       <div className={s.insideContainer}>
-        <span>
-          <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-            <label className={s.backToCards}>
-              <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#ffffff' }} />
-              <Typography className={s.backToPacks} variant={'body2'}>
-                Back to Packs List
-              </Typography>
-            </label>
-          </Link>
-        </span>
+        {inputSearchData.length > 0 ? (
+          <>
+            <>
+              <span>
+                <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                  <label className={s.backToCards}>
+                    <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#ffffff' }} />
+                    <Typography className={s.backToPacks} variant={'body2'}>
+                      Back to Packs List
+                    </Typography>
+                  </label>
+                </Link>
+              </span>
 
-        <span className={s.packAddName}>
-          <Typography className={s.packName} variant={'large'}>
-            {'packName'}
-            <span style={{ marginLeft: '10px' }}>
-              <PackOptions />
-              {/*тут ^ будет коллбек по откртию модалок */}
-            </span>
-          </Typography>
-          <Button className={s.bt} onClick={() => setModalState(CardsModals.CREATE)}>
-            Add New Card
-          </Button>
-          <AddCardModal
-            name={'Add New Card'}
-            open={openModal}
-            setModalState={setModalState}
-            createCard={addNewCardHandler}
-          />
-        </span>
-        <img className={s.packImg} src={headerLogo} alt="" />
-        <div className={s.searchContainer}>
-          <Input
-            className={s.input}
-            name={'Search input'}
-            onChange={changeSearchValue}
-            value={inputValue}
-          />
-        </div>
-        <CardsTable
-          mutateCardHandler={mutateCardHandler}
-          setModalState={setModalState}
-          editCardHandler={editCardhandler}
-          inputSearchData={inputSearchData}
-          itemData={itemData}
-          openModal={openModal}
-        />
+              <span className={s.packAddName}>
+                <Typography className={s.packName} variant={'large'}>
+                  {'packName'}
+                  <span style={{ marginLeft: '10px' }}>
+                    <PackOptions />
+                    {/*тут ^ будет коллбек по откртию модалок */}
+                  </span>
+                </Typography>
+
+                <Button className={s.bt} onClick={() => setModalState(CardsModals.CREATE)}>
+                  Add New Card
+                </Button>
+                <AddCardModal
+                  name={'Add New Card'}
+                  open={openModal}
+                  setModalState={setModalState}
+                  createCard={addNewCardHandler}
+                />
+              </span>
+              <img className={s.packImg} src={headerLogo} alt="" />
+              <div className={s.searchContainer}>
+                <Input
+                  className={s.input}
+                  name={'Search input'}
+                  onChange={changeSearchValue}
+                  value={inputValue}
+                />
+              </div>
+              <CardsTable
+                mutateCardHandler={mutateCardHandler}
+                setModalState={setModalState}
+                editCardHandler={editCardhandler}
+                inputSearchData={inputSearchData}
+                itemData={itemData}
+                openModal={openModal}
+              />
+            </>
+            <Pagination
+              currentPage={data.pagination.currentPage}
+              pageSize={data.pagination.itemsPerPage}
+              totalCount={data.pagination.totalItems}
+              options={selectOptions}
+              setItemsPerPage={setItemsOnPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </>
+        ) : (
+          <div className={s.insideContainer}>
+            <div className={s.firstContainer}>
+              <span>
+                <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                  <label className={s.backToCards}>
+                    <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#ffffff' }} />
+                    <Typography className={s.backToPacks} variant={'body2'}>
+                      Back to Packs List
+                    </Typography>
+                  </label>
+                </Link>
+              </span>
+
+              <span className={s.packAddName}>
+                <Typography className={s.packName} variant={'large'}>
+                  {'packName'}
+                  <span style={{ marginLeft: '10px' }}>
+                    <PackOptions />
+                    {/*тут ^ будет коллбек по откртию модалок */}
+                  </span>
+                </Typography>
+              </span>
+            </div>
+            <div className={s.secondContainer}>
+              <EmptyPack
+                addNewCardHandler={addNewCardHandler}
+                setModalState={setModalState}
+                openModal={openModal}
+              />
+            </div>
+          </div>
+        )}
       </div>
       <Pagination
         currentPage={data.pagination.currentPage}
