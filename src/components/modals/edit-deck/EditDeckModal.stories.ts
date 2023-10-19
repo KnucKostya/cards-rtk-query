@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { EditDeckModal } from '@/components/modals/edit-deck'
-import { DeckModals } from '@/types/common'
+import { DeckModals } from '@/features/deck-pack'
 
 const meta = {
   title: 'Modals/EditDeck',

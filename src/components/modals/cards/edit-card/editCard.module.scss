@@ -3,6 +3,7 @@
 .modal {
   @include display-column;
 
+  z-index: 10;
   align-items: flex-start;
   width: 542px;
 
@@ -15,6 +16,7 @@
       margin-bottom: 30px;
 
       .select {
+        z-index: 11;
         width: 93%;
       }
 

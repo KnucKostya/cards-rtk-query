@@ -19,6 +19,7 @@ type AddCardModalPropsType = {
   createCard: (question: string, answer: string) => void
 }
 
+// eslint-disable-next-line import/no-named-as-default-member
 export const AddCardModal = React.memo(
   ({ open, setModalState, createCard, name }: AddCardModalPropsType) => {
     const { control, handleSubmit } = useForm<NewCardField>({

@@ -83,8 +83,6 @@ export const Cards = memo(() => {
     setItemData(item)
   }
 
-  console.log(inputSearchData)
-
   return (
     <div className={s.packContainer}>
       <div className={s.insideContainer}>

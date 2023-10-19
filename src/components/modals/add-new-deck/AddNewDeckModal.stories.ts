@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { AddNewDeckModal } from ''
-import { DeckModals } from '@/types/common'
+import { AddNewDeckModal } from '@/components/modals/add-new-deck/AddNewDeckModal.tsx'
+import { DeckModals } from '@/features/deck-pack'
 
 const meta = {
   title: 'Modals/AddNewDeck',

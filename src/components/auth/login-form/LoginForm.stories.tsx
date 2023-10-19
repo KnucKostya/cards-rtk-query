@@ -11,5 +11,5 @@ const meta = {
 export default meta
 
 export const Primary = () => {
-  return <LoginForm />
+  return <LoginForm onSubmit={() => {}} />
 }

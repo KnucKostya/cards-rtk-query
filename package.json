@@ -1,6 +1,7 @@
 {
   "name": "cards-redux-toolkit-query",
   "private": true,
+  "homepage": "https://KnucKnuck.github.io/cards-rtk-query",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,7 +11,9 @@
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
@@ -63,6 +66,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.13",
+    "gh-pages": "^6.0.0",
     "sass": "^1.67.0",
     "storybook": "7.4.2",
     "stylelint": "^15.10.3",

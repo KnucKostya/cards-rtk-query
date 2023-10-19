@@ -14,9 +14,9 @@ import s from './EditDeckModal.module.scss'
 
 type Props = {
   open: DeckModals | null
-  setOpen: (value: DeckModals | null) => void
-  onSubmit: (values: NewDeckNameFields) => void
-  activeItem: Deck | undefined
+  setOpen?: (value: DeckModals | null) => void
+  onSubmit?: (values: NewDeckNameFields) => void
+  activeItem?: Deck | undefined
 }
 
 export const EditDeckModal = ({ onSubmit, open, setOpen, activeItem }: Props) => {
@@ -40,16 +40,22 @@ export const EditDeckModal = ({ onSubmit, open, setOpen, activeItem }: Props) =>
   }, [activeItem])
 
   const onSubmitHandler = handleSubmit(data => {
-    onSubmit(data)
-    setOpen(null)
+    if (onSubmit) {
+      onSubmit(data)
+    }
+    if (setOpen) {
+      setOpen(null)
+    }
   })
 
   const cancelModalHandler = () => {
-    setOpen(null)
+    if (setOpen) {
+      setOpen(null)
+    }
   }
 
   return (
-    <Modal className={s.modal} open={open === DeckModals.UPDATE} setModalState={setOpen}>
+    <Modal className={s.modal} open={open === DeckModals.UPDATE} setModalState={setOpen!}>
       <Typography className={s.title} variant={'h2'}>
         Edit Deck
       </Typography>

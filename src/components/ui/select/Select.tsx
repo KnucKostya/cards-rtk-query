@@ -67,7 +67,7 @@ export const Selector = ({
               <Select.Group className={s.selectGroup}>
                 {selectData?.map((el, index) => {
                   return (
-                    <SelectItem key={index} value={el}>
+                    <SelectItem className={s.selectItem} key={index} value={el}>
                       {el}
                     </SelectItem>
                   )
