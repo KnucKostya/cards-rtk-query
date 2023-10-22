@@ -1,7 +1,8 @@
 .modal {
   display: flex;
   flex-direction: column;
-  width: 542px;
+  width: 100%;
+  max-width: 542px;
 
   &::before {
     content: '';

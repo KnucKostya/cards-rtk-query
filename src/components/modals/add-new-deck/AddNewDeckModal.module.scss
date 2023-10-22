@@ -1,7 +1,8 @@
 .modal {
   display: flex;
   flex-direction: column;
-  width: 542px;
+  width: 100%;
+  max-width: 542px;
 
   &::before {
     content: '';
@@ -23,7 +24,7 @@
   width: 100%;
 }
 
-.newDeckForm {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +37,12 @@
   margin-bottom: 42px;
 }
 
-.input {
+.fileInput {
+  display: none;
+}
+
+.coverButton {
+  margin-top: 16px;
   margin-bottom: 24px;
 }
 

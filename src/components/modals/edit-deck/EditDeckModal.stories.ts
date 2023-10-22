@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>
 
 export const EditDeck: Story = {
   args: {
-    open: DeckModals.UPDATE,
+    openModal: DeckModals.UPDATE,
+    activeItem: undefined,
   },
 }

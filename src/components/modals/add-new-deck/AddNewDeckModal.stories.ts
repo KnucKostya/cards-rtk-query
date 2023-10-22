@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { AddNewDeckModal } from '@/components/modals/add-new-deck/AddNewDeckModal.tsx'
+import { AddNewDeckModal } from './AddNewDeckModal.tsx'
 import { DeckModals } from '@/features/deck-pack'
 
 const meta = {
@@ -22,6 +22,6 @@ type Story = StoryObj<typeof meta>
 
 export const AddNewDeck: Story = {
   args: {
-    open: DeckModals.CREATE,
+    openModal: DeckModals.CREATE,
   },
 }

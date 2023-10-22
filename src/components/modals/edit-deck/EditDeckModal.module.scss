@@ -1,7 +1,8 @@
 .modal {
   display: flex;
   flex-direction: column;
-  width: 542px;
+  width: 100%;
+  max-width: 542px;
 
   &::before {
     content: '';
@@ -23,7 +24,7 @@
   width: 100%;
 }
 
-.newDeckForm {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,10 +35,6 @@
 
 .title {
   margin-bottom: 42px;
-}
-
-.input {
-  margin-bottom: 24px;
 }
 
 .checkbox {

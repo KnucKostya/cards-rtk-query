@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 import { Typography } from '@/components/ui/typography'
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import s from './Input.module.scss'
 
 export type AdditionalTypeToInput = {
@@ -14,31 +14,30 @@ export type AdditionalTypeToInput = {
   callBack?: (value: boolean) => void
   callBackValue?: boolean
   autoFocusValue?: boolean
+  withoutError?: boolean
 }
 
 export type InputPropsType = ComponentPropsWithoutRef<'input'> & AdditionalTypeToInput
 
-export const Input = (props: InputPropsType) => {
-  let {
-    type = 'text',
+export const Input = forwardRef<HTMLInputElement, InputPropsType>((props, ref) => {
+  const {
     name,
     label,
     errorMessage,
     leftSideIcon,
     rightSideIcon,
     disabled,
-    value = '',
-    onChange,
     className,
     callBack,
     callBackValue,
-    autoFocusValue,
+    withoutError,
     ...rest
   } = props
 
   const showPasswordHandler = () => {
     callBack?.(!callBackValue)
   }
+
   const inputClassName = clsx(s.input, errorMessage && s.errorInput)
 
   const wrapperClassName = clsx(s.inputWrapper, className)
@@ -51,25 +50,16 @@ export const Input = (props: InputPropsType) => {
       <div>
         <div className={leftSideIcon ? s.inputIcon : s.defaultInputWithoutIcon}>
           {leftSideIcon && <span className={s.searchIcon}>{leftSideIcon}</span>}
-          <input
-            type={type}
-            placeholder={name}
-            disabled={disabled}
-            value={value}
-            onChange={onChange}
-            className={inputClassName}
-            autoFocus={autoFocusValue}
-            {...rest}
-          />
+          <input type="text" disabled={disabled} className={inputClassName} ref={ref} {...rest} />
           {rightSideIcon && (
             <span className={s.rightSideIcon} onClick={showPasswordHandler}>
               {rightSideIcon}
             </span>
           )}
         </div>
-        {errorMessage !== '' && (
-          <div>
-            <Typography variant={'body2'} className={s.error}>
+        {!withoutError && (
+          <div className={s.errorPlace}>
+            <Typography className={s.error} variant={'caption'}>
               {errorMessage}
             </Typography>
           </div>
@@ -77,4 +67,4 @@ export const Input = (props: InputPropsType) => {
       </div>
     </div>
   )
-}
+})

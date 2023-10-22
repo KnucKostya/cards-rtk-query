@@ -5,27 +5,32 @@ import { DeckModals } from '@/features/deck-pack'
 import s from './DeleteDeckModal.module.scss'
 
 type Props = {
-  open: DeckModals | null
-  setOpen: (value: DeckModals | null) => void
+  deckName: string | undefined
+  openModal: DeckModals | null
+  setOpenModal: (value: DeckModals | null) => void
   deleteCallBack: () => void
 }
-export const DeleteDeckModal = ({ open, setOpen, deleteCallBack }: Props) => {
+export const DeleteDeckModal = ({ openModal, setOpenModal, deleteCallBack, deckName }: Props) => {
   const cancelModalHandler = () => {
-    setOpen(null)
+    setOpenModal(null)
   }
 
   const onDelete = () => {
     deleteCallBack()
-    setOpen(null)
+    setOpenModal(null)
   }
 
   return (
-    <Modal className={s.modal} open={open === DeckModals.DELETE} setModalState={setOpen}>
+    <Modal
+      className={s.modal}
+      open={openModal === DeckModals.DELETE}
+      closeCallBack={cancelModalHandler}
+    >
       <Typography className={s.title} variant={'h2'}>
         Delete Deck
       </Typography>
       <Typography variant={'body1'}>
-        Do you really want to remove <Typography variant={'subtitle1'}>Pack Name</Typography>?
+        Do you really want to remove <Typography variant={'subtitle1'}>{deckName}</Typography>?
       </Typography>
       <Typography className={s.subtitle}>All cards will be deleted.</Typography>
       <div className={s.buttonArea}>
