@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { ForgotPasswordForm } from '@/components/auth/forgot-pasword-form'
+import { BrowserRouter } from 'react-router-dom'
 
 const meta = {
   title: 'Auth/ForgotPasswordForm',
@@ -19,4 +20,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const ForgotPassword: Story = {}
+export const ForgotPassword: Story = {
+  render: () => {
+    return (
+      <BrowserRouter>
+        <ForgotPasswordForm />
+      </BrowserRouter>
+    )
+  },
+}

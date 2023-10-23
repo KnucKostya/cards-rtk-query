@@ -1,8 +1,12 @@
 export type UpdateDeckResponseData = Deck & DeckAuthor
 
-export type UpdateDeckArgs = Pick<Deck, 'name' | 'cover' | 'isPrivate' | 'id'>
+export type UpdateDeckArgs = CreateDeckArgs & Pick<Deck, 'id'>
 
-export type CreateDeckArgs = Pick<Deck, 'name' | 'cover' | 'isPrivate'>
+export type CreateDeckArgs = {
+  name: string
+  cover?: string | null
+  isPrivate: boolean
+}
 
 export type Sort = {
   key: string
@@ -20,9 +24,9 @@ export type Deck = {
   id: string
   userId: string
   name: string
-  isPrivate?: boolean
+  isPrivate: boolean
   shots: number
-  cover?: string | null
+  cover: string
   rating: number
   isDeleted?: any
   isBlocked?: any

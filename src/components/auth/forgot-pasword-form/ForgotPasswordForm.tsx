@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import s from './ForgotPasswordForm.module.scss'
 
 type Props = {
-  onSubmit: (data: ForgotPasswordFields) => void
+  onSubmit?: (data: ForgotPasswordFields) => void
 }
 
 export const ForgotPasswordForm = (props: Props) => {
@@ -27,11 +27,11 @@ export const ForgotPasswordForm = (props: Props) => {
   })
 
   const onSubmitHandler = handleSubmit(data => {
-    onSubmit(data)
+    onSubmit?.(data)
   })
 
   return (
-    <Card className={s.card}>
+    <Card className={s.forgotCard}>
       <form className={s.form} onSubmit={onSubmitHandler}>
         <Typography className={s.title} variant={'large'}>
           Forgot your password?
@@ -43,6 +43,7 @@ export const ForgotPasswordForm = (props: Props) => {
           name={'email'}
           label={'Email'}
           errorMessage={errors.email?.message}
+          placeholder={'Enter your email'}
         />
         <Typography className={s.subtitle_1} variant={'body2'}>
           Enter your email address and we will send you further instructions

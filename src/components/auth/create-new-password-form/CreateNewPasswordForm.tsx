@@ -13,7 +13,7 @@ import { CreateNewPasswordFields } from '@/types/common'
 import s from './CreateNewPassword.module.scss'
 
 type Props = {
-  onSubmit: (values: CreateNewPasswordFields) => void
+  onSubmit?: (values: CreateNewPasswordFields) => void
 }
 
 export const CreateNewPasswordForm = (props: Props) => {
@@ -32,7 +32,7 @@ export const CreateNewPasswordForm = (props: Props) => {
   })
 
   const onSubmitHandler = handleSubmit(data => {
-    onSubmit(data)
+    onSubmit?.(data)
   })
 
   const icon = showPassword ? <Icon srcIcon={crossedEye} /> : <Icon srcIcon={eye} />
@@ -53,7 +53,7 @@ export const CreateNewPasswordForm = (props: Props) => {
         <ControlledInput
           aria-label={'enter new password'}
           type={inputType}
-          className={s.input}
+          placeholder={'Enter your password'}
           control={control}
           name={'password'}
           label={'Password'}

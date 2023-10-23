@@ -23,5 +23,9 @@ export const DisabledSelect: Story = {
 export const SelectWithData = () => {
   let data = ['lol', 'kek']
 
-  return <Selector label={'Select'} selectData={data} setSelectedValue={() => {}} />
+  return (
+    <div style={{ width: '1000px' }}>
+      <Selector label={'Select'} selectData={data} setSelectedValue={() => {}} />
+    </div>
+  )
 }

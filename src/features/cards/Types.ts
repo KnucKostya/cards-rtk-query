@@ -15,6 +15,19 @@ export type CardData = {
   userId: string
 }
 
+type Field = 'question' | 'answer' | 'updated' | 'grade'
+
+type Direction = 'asc' | 'desc'
+
+export type GetCardsQueryParams = {
+  id: string
+  question?: string
+  answer?: string
+  orderBy?: `${Field}-${Direction}` | null
+  currentPage?: number
+  itemsPerPage?: number
+}
+
 export type GetCardsResponse = {
   items: [CardData]
   pagination: {

@@ -1,54 +1,39 @@
 @import '/src/styles/mixins';
 
-.container {
+.signInCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 
   margin-top: 36px;
   padding: 33px 36px 29px;
 
-  .signTypography {
+  .title {
+    align-self: center;
+  }
+
+  .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5%;
+    justify-content: center;
   }
 
-  .error {
-    @include custom-text-style(
-      var(--font-family-primary),
-      12px,
-      400,
-      24px,
-      var(--color-danger-300)
-    );
+  .signInText {
+    text-decoration-line: underline;
   }
 
-  .input {
-    margin-top: 5%;
+  .question {
+    margin-top: 20px;
+    color: var(--color-light-900);
   }
 
   .button {
-    @include custom-text-style(var(--font-family-primary), 14px, 700, 24px, none);
-
-    margin-top: 20%;
+    margin-top: 36px;
   }
 
-  .signInContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .question {
-      margin-top: 5%;
-      color: var(--color-light-900);
-    }
-
-    .loginLink {
-      margin-top: 5%;
-      color: var(--color-accent-500);
-      text-decoration-line: underline;
-    }
+  .prompt {
+    margin-top: 5px;
+    color: var(--color-dark-100);
   }
 }

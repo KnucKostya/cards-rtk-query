@@ -1,12 +1,14 @@
 @import '@/styles/mixins';
 
 .header {
-  @include size(100vw, 60px); //TODO can be error with adaptive
+  @include size(100vw, 60px);
   @include display-flex;
 
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
+
   background-color: var(--color-dark-700);
 
   .container {
@@ -33,14 +35,10 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+    }
 
-      .user {
-        cursor: pointer;
-
-        .userName {
-          border-bottom: 1px dashed var(--color-light-100);
-        }
-      }
+    .userName {
+      border-bottom: 1px dashed var(--color-light-100);
     }
   }
 }

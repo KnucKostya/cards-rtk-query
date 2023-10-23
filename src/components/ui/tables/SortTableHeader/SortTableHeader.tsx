@@ -1,6 +1,4 @@
 import { ComponentPropsWithoutRef } from 'react'
-import { TableHead } from '@/components/ui/tables/TableHead'
-import { TableRow } from '@/components/ui/tables/TableRow'
 import { TableHeadCell } from '@/components/ui/tables/TableHeadCell'
 import sortDown from '@/assets/icons/sort_down.svg'
 import sortUp from '@/assets/icons/sort_up.svg'
@@ -10,7 +8,7 @@ import { Sort } from '@/services/deck-service'
 import s from './SortTableHeader.module.scss'
 
 type Props = Omit<
-  ComponentPropsWithoutRef<'thead'> & {
+  ComponentPropsWithoutRef<'th'> & {
     columns: Column[]
     sort?: Sort
     onSort?: (sort: Sort) => void
@@ -18,7 +16,7 @@ type Props = Omit<
   'children'
 >
 
-export const SortTableHeader = ({ columns, sort, onSort, ...restProps }: Props) => {
+export const TableHeadCellWithSort = ({ columns, sort, onSort, ...restProps }: Props) => {
   const sortDownIcon = <Icon className={s.sortIcon} srcIcon={sortDown} />
   const sortUpIcon = <Icon className={s.sortIcon} srcIcon={sortUp} />
   const sortHandler = (key: string) => () => {
@@ -38,18 +36,12 @@ export const SortTableHeader = ({ columns, sort, onSort, ...restProps }: Props) 
     })
   }
 
-  return (
-    <TableHead {...restProps}>
-      <TableRow>
-        {columns.map(({ title, key }) => (
-          <TableHeadCell key={key} onClick={sortHandler(key)}>
-            {title}
-            {sort && sort.key === key && (
-              <span>{sort.direction === 'asc' ? sortUpIcon : sortDownIcon}</span>
-            )}
-          </TableHeadCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  )
+  return columns.map(({ title, key }) => (
+    <TableHeadCell key={key} onClick={sortHandler(key)} {...restProps}>
+      {title}
+      {sort && sort.key === key && (
+        <span>{sort.direction === 'asc' ? sortUpIcon : sortDownIcon}</span>
+      )}
+    </TableHeadCell>
+  ))
 }

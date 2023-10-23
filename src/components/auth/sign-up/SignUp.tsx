@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
@@ -12,10 +11,10 @@ import eye from '@/assets/icons/eye.svg'
 import { Icon } from '@/components/ui/icon'
 import { CreateAccountFields } from '@/types/common'
 import { Link } from 'react-router-dom'
-import s from './signUp.module.scss'
+import s from './SignUp.module.scss'
 
 type Props = {
-  onSubmit: (values: CreateAccountFields) => void
+  onSubmit?: (values: CreateAccountFields) => void
 }
 
 export const SignUp = ({ onSubmit }: Props) => {
@@ -27,87 +26,89 @@ export const SignUp = ({ onSubmit }: Props) => {
     formState: { errors },
   } = useForm<CreateAccountFields>({
     resolver: zodResolver(createAccountSchema),
+    defaultValues: { email: '', name: '', password: '' },
   })
 
   const onSubmitHandler = handleSubmit(data => {
-    onSubmit(data)
+    onSubmit?.(data)
   })
 
   const inputEyeIcon = showPassword ? <Icon srcIcon={crossedEye} /> : <Icon srcIcon={eye} />
 
   return (
-    <Card aria-label={'registration form'} className={s.container}>
-      <div>
-        <Typography variant={'h1'} className={s.signTypography}>
-          Sign Up
+    <Card aria-label={'registration form'} className={s.signInCard}>
+      <Typography variant={'h1'} className={s.title}>
+        Sign Up
+      </Typography>
+      <form className={s.form} onSubmit={onSubmitHandler}>
+        <ControlledInput
+          aria-label={'enter your email'}
+          name={'email'}
+          control={control}
+          label={'Email'}
+          className={s.input}
+          placeholder={'Enter your email'}
+          errorMessage={errors?.email?.message}
+        />
+        <ControlledInput
+          aria-label={'enter your nick name'}
+          name={'name'}
+          control={control}
+          label={'Nickname'}
+          placeholder={'Enter desired nickname'}
+          errorMessage={errors?.name?.message}
+        />
+        <ControlledInput
+          aria-label={'enter your password'}
+          type={showPassword ? 'text' : 'password'}
+          name={'password'}
+          control={control}
+          label={'Password'}
+          placeholder={'Enter your password'}
+          callBack={setShowPassword}
+          callBackValue={showPassword}
+          rightSideIcon={inputEyeIcon}
+          errorMessage={errors?.password?.message}
+        />
+        <ControlledInput
+          aria-label={'confirm your password'}
+          type={showPassword ? 'text' : 'password'}
+          name={'confirmPassword'}
+          placeholder={'Confirm your password'}
+          control={control}
+          label={'Confirm password'}
+          callBack={setShowPassword}
+          callBackValue={showPassword}
+          rightSideIcon={inputEyeIcon}
+          errorMessage={errors?.confirm?.message}
+        />
+        <Typography variant={'caption'} className={s.prompt}>
+          Password must be at least 8 characters and includes at least one digit, one letter and one
+          special symbol
         </Typography>
-        <form onSubmit={onSubmitHandler}>
-          <DevTool control={control} />
-          <ControlledInput
-            aria-label={'enter your email'}
-            name={'email'}
-            control={control}
-            label={'Email'}
-            className={s.input}
-          />
-          <Typography variant={'body2'} className={s.error}>
-            {errors?.email?.message}
+        <Button
+          aria-label={'commit registration'}
+          type="submit"
+          fullWidth={true}
+          className={s.button}
+        >
+          <Typography variant={'subtitle2'}>Sign Up</Typography>
+        </Button>
+        <Typography className={s.question} variant={'body2'}>
+          Already have an account?
+        </Typography>
+        <Button
+          as={Link}
+          to={'/login'}
+          type={'button'}
+          aria-label={'back to login page'}
+          variant={'link'}
+        >
+          <Typography className={s.signInText} variant={'subtitle2'}>
+            Sign In
           </Typography>
-          <ControlledInput
-            aria-label={'enter your password'}
-            className={s.input}
-            type={showPassword ? 'text' : 'password'}
-            name={'password'}
-            control={control}
-            label={'Password'}
-            callBack={setShowPassword}
-            callBackValue={showPassword}
-            rightSideIcon={inputEyeIcon}
-          />
-          <Typography variant={'body2'} className={s.error}>
-            {errors?.password?.message}
-          </Typography>
-          <ControlledInput
-            aria-label={'confirm your password'}
-            className={s.input}
-            type={showPassword ? 'text' : 'password'}
-            name={'confirmPassword'}
-            placeholder={'confirm password'}
-            control={control}
-            label={'Confirm password'}
-            callBack={setShowPassword}
-            callBackValue={showPassword}
-            rightSideIcon={inputEyeIcon}
-          />
-          <Typography variant={'body2'} className={s.error}>
-            {errors?.confirm?.message}
-          </Typography>
-          <Button
-            aria-label={'commit registration'}
-            type="submit"
-            fullWidth={true}
-            className={s.button}
-          >
-            <Typography variant={'subtitle2'}>Sign Up</Typography>
-          </Button>
-          <div className={s.signInContainer}>
-            <Typography className={s.question} variant={'body2'}>
-              Already have an account?
-            </Typography>
-            <Button
-              as={Link}
-              to={'/login'}
-              type={'button'}
-              aria-label={'back to login page'}
-              variant={'link'}
-            >
-              <Typography className={s.loginLink} variant={'subtitle2'}>
-                Sign In
-              </Typography>
-            </Button>
-          </div>
-        </form>
-      </div>
+        </Button>
+      </form>
     </Card>
   )
 }

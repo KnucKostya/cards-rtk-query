@@ -1,7 +1,11 @@
 @import '@/styles/mixins';
 
 .container {
-  @include flex(column, center, center, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+  justify-content: center;
 
   width: 100vw;
   height: calc(100vh - 60px);

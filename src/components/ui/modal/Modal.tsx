@@ -4,7 +4,7 @@ import { clsx } from 'clsx'
 import s from './Modal.module.scss'
 
 type AdditionalModalType = {
-  setModalState: (value: any) => void
+  closeCallBack: (value: any) => void
 }
 
 export type ModalProps = ComponentPropsWithoutRef<typeof Dialog.Root> &
@@ -12,9 +12,13 @@ export type ModalProps = ComponentPropsWithoutRef<typeof Dialog.Root> &
   AdditionalModalType
 
 export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, ModalProps>((props, ref) => {
-  const { children, className, title, setModalState, ...rest } = props
+  const { children, className, title, closeCallBack, ...rest } = props
 
   const contentClassName = clsx(s.content, className)
+
+  const closeModalHandler = () => {
+    closeCallBack(null)
+  }
 
   return (
     <Dialog.Root {...rest}>
@@ -22,7 +26,7 @@ export const Modal = forwardRef<ElementRef<typeof Dialog.Content>, ModalProps>((
         <Dialog.Overlay className={s.overlay} />
         <Dialog.Content ref={ref} className={contentClassName} {...rest}>
           {children}
-          <Dialog.Close className={s.closeBtn} onClick={() => setModalState(null)} />
+          <Dialog.Close className={s.closeBtn} onClick={closeModalHandler} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

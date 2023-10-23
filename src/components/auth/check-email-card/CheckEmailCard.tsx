@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Icon } from '@/components/ui/icon'
 import { Typography } from '@/components/ui/typography'
-import s from './CheckEmailCard.module.scss'
 import { Link } from 'react-router-dom'
+import s from './CheckEmailCard.module.scss'
 
 export const CheckEmailCard = () => {
   return (
@@ -27,7 +27,7 @@ export const CheckEmailCard = () => {
         fullWidth={true}
         aria-label={'back to sign in button'}
       >
-        <Typography variant={'body2'}>Back to Sign In</Typography>
+        <Typography variant={'subtitle2'}>Back to Sign In</Typography>
       </Button>
     </Card>
   )

@@ -16,9 +16,9 @@ import {
   Deck,
   GetDeckQueryParams,
   Sort,
+  CreateDeckArgs,
 } from '@/services/deck-service'
-import { NewDeckNameFields } from '@/types/common'
-import { DeckModals } from '@/features/deck-pack'
+import { DeckModals, NewDeckFields } from '@/features/deck-pack'
 import { AddNewDeckModal } from '@/components/modals/add-new-deck'
 import searchIcon from '@/assets/icons/input_search.svg'
 import { EditDeckModal } from '@/components/modals/edit-deck'
@@ -37,16 +37,17 @@ export const DeckPack = () => {
   const [sort, setSort] = useState<Sort | null>(null)
   const [authorId, setAuthorId] = useState<string | undefined>(undefined)
 
+  const inputIcon = <Icon srcIcon={searchIcon} />
   const selectOptions = ['10', '20', '30', '50', '100']
-
   const tabs: TabType[] = [
     {
       id: '1',
-      title: 'My Cards',
+      title: 'My Decks',
     },
     {
       id: '2',
-      title: 'All Cards',
+      title: 'All Decks',
+      defaultTab: true,
     },
   ]
 
@@ -73,7 +74,6 @@ export const DeckPack = () => {
     authorId,
   })
 
-  console.log(data)
   const clearFilterHandler = () => {
     setName('')
     setSliderValues([0, 61])
@@ -85,11 +85,15 @@ export const DeckPack = () => {
   }
 
   const deleteDeckHandler = () => {
-    deleteDeck({ id: activeDeck?.id || '' })
+    deleteDeck({ id: activeDeck?.id })
   }
 
-  const updateDeckHandler = (values: NewDeckNameFields) => {
-    const { name, isPrivate } = values
+  const createDeckHandler = (data: CreateDeckArgs) => {
+    createDeck(data)
+  }
+
+  const updateDeckHandler = (data: NewDeckFields) => {
+    const { name, isPrivate } = data
 
     updateDeck({ id: activeDeck?.id || '', name, isPrivate })
   }
@@ -105,8 +109,6 @@ export const DeckPack = () => {
     }
   }
 
-  const inputIcon = <Icon srcIcon={searchIcon} />
-
   if (isLoading) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>
   }
@@ -120,14 +122,16 @@ export const DeckPack = () => {
       <div className={s.deckNameAndButton}>
         <Typography variant={'large'}>Deck&apos;s list</Typography>
         <Button onClick={() => openModalHandler(DeckModals.CREATE)}>
-          <Typography>Add new deck</Typography>
+          <Typography variant={'subtitle2'}>Add new deck</Typography>
         </Button>
       </div>
       <div className={s.tableSettings}>
         <Input
+          value={name}
           placeholder={'Search'}
           className={s.searchInput}
           leftSideIcon={inputIcon}
+          withoutError
           onChange={e => setName(e.currentTarget.value)}
         />
         <TabSwitcher label={'Show decks cards'} setActiveTab={filterByAuthorHandler} tabs={tabs} />
@@ -142,9 +146,14 @@ export const DeckPack = () => {
           <Typography variant={'subtitle2'}>Clear filter</Typography>
         </Button>
       </div>
-      <DeckTable data={data.items} onIconClick={openModalHandler} sort={sort} setSort={setSort} />
+      <DeckTable
+        data={data.items}
+        onIconClick={openModalHandler}
+        sort={sort}
+        setSort={setSort}
+        currentUserId={userData?.id}
+      />
       <Pagination
-        className={s.pagination}
         options={selectOptions}
         totalCount={data.pagination.totalItems}
         currentPage={data.pagination.currentPage}
@@ -152,14 +161,23 @@ export const DeckPack = () => {
         setCurrentPage={setCurrentPage}
         setItemsPerPage={setItemsPerPage}
       />
-      <AddNewDeckModal open={openModal} setOpen={setOpenModal} onSubmit={createDeck} />
+      <AddNewDeckModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        onSubmit={createDeckHandler}
+      />
       <EditDeckModal
         activeItem={activeDeck}
-        open={openModal}
-        setOpen={setOpenModal}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
         onSubmit={updateDeckHandler}
       />
-      <DeleteDeckModal deleteCallBack={deleteDeckHandler} open={openModal} setOpen={setOpenModal} />
+      <DeleteDeckModal
+        deckName={activeDeck?.name}
+        deleteCallBack={deleteDeckHandler}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
     </div>
   )
 }

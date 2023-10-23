@@ -1,0 +1,11 @@
+@import '/src/styles/mixins';
+
+.container {
+  @include display-column;
+
+  .line {
+    border: 1px solid var(--color-dark-500);
+    margin-top: 12px;
+    width: 100%;
+  }
+}

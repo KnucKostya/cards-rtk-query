@@ -1,6 +1,5 @@
 import { ControlledInput } from '@/components/ui/controlled/controlledInput'
 import { useForm } from 'react-hook-form'
-import { NewDeckNameFields } from '@/types/common'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newDeckNameSchema } from '@/schemes'
 import { ControlledCheckbox } from '@/components/ui/controlled/controlledCheckbox'
@@ -8,55 +7,63 @@ import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
 import { Modal } from '@/components/ui/modal'
 import { useEffect } from 'react'
-import { DeckModals } from '@/features/deck-pack'
+import { DeckModals, NewDeckFields } from '@/features/deck-pack'
 import { Deck } from '@/services/deck-service'
 import s from './EditDeckModal.module.scss'
 
 type Props = {
-  open: DeckModals | null
-  setOpen: (value: DeckModals | null) => void
-  onSubmit: (values: NewDeckNameFields) => void
+  openModal: DeckModals | null
+  setOpenModal: (value: DeckModals | null) => void
+  onSubmit?: (values: NewDeckFields) => void
   activeItem: Deck | undefined
 }
 
-export const EditDeckModal = ({ onSubmit, open, setOpen, activeItem }: Props) => {
+export const EditDeckModal = ({ onSubmit, openModal, setOpenModal, activeItem }: Props) => {
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<NewDeckNameFields>({
+  } = useForm<NewDeckFields>({
     resolver: zodResolver(newDeckNameSchema),
     mode: 'onSubmit',
     defaultValues: { name: '', isPrivate: false },
   })
 
   useEffect(() => {
+    resetFormFields()
+  }, [activeItem])
+
+  const onSubmitHandler = handleSubmit(data => {
+    onSubmit?.(data)
+    setOpenModal(null)
+  })
+
+  const cancelModalHandler = () => {
+    setOpenModal(null)
+    resetFormFields()
+  }
+
+  const resetFormFields = () => {
     if (activeItem) {
       const { name, isPrivate } = activeItem
 
       reset({ name, isPrivate })
     }
-  }, [activeItem])
-
-  const onSubmitHandler = handleSubmit(data => {
-    onSubmit(data)
-    setOpen(null)
-  })
-
-  const cancelModalHandler = () => {
-    setOpen(null)
   }
 
   return (
-    <Modal className={s.modal} open={open === DeckModals.UPDATE} setModalState={setOpen}>
+    <Modal
+      className={s.modal}
+      open={openModal === DeckModals.UPDATE}
+      closeCallBack={cancelModalHandler}
+    >
       <Typography className={s.title} variant={'h2'}>
         Edit Deck
       </Typography>
-      <form onSubmit={onSubmitHandler} className={s.newDeckForm}>
+      <form onSubmit={onSubmitHandler} className={s.form}>
         <ControlledInput
           aria-label={'enter new deck name'}
-          className={s.input}
           control={control}
           name={'name'}
           label={'Name Deck'}
@@ -64,7 +71,7 @@ export const EditDeckModal = ({ onSubmit, open, setOpen, activeItem }: Props) =>
         />
         <ControlledCheckbox
           className={s.checkbox}
-          label={'Private pack'}
+          label={'Private deck'}
           control={control}
           name={'isPrivate'}
         />

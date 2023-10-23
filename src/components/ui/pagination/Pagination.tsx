@@ -104,8 +104,7 @@ export const Pagination = (props: Props) => {
           Show
         </Typography>
         <Selector
-          triggerClassName={s.trigger}
-          contentClassName={s.content}
+          className={s.trigger}
           value={String(pageSize)}
           setSelectedValue={changeSelectFilterHandler}
           selectData={options}
