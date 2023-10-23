@@ -1,20 +1,17 @@
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { clsx } from 'clsx'
 import { Typography } from '@/components/ui/typography'
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import s from './Input.module.scss'
 
 export type AdditionalTypeToInput = {
-  type?: string
   leftSideIcon?: JSX.Element
   rightSideIcon?: JSX.Element
   errorMessage?: string
+  withoutError?: boolean
   label?: string
-  value?: string
   name?: string
   callBack?: (value: boolean) => void
   callBackValue?: boolean
-  autoFocusValue?: boolean
-  withoutError?: boolean
 }
 
 export type InputPropsType = ComponentPropsWithoutRef<'input'> & AdditionalTypeToInput

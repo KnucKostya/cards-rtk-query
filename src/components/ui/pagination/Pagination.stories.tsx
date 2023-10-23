@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Pagination } from '@/components/ui/pagination'
@@ -23,6 +25,10 @@ const meta = {
       description:
         'Represents the min number of page buttons to be shown on each side of the current page button (default = 1)',
     },
+    onChange: {
+      description:
+        'Callback function that invoked with the updated page value when the page is changed.',
+    },
   },
 } satisfies Meta<typeof Pagination>
 
@@ -35,14 +41,21 @@ export const CustomPaginationWithState: Story = {
 }
 
 const RenderPagination = () => {
-  const page = 1
-  const pageSize = 10
+  const [page, setPage] = useState<number>(1)
+  const [pageSize, setPageSize] = useState<number>(10)
 
   const options = ['10', '20', '30', '50', '100']
 
   const totalCount = 100
 
   return (
-    <Pagination options={options} totalCount={totalCount} currentPage={page} pageSize={pageSize} />
+    <Pagination
+      options={options}
+      totalCount={totalCount}
+      currentPage={page}
+      pageSize={pageSize}
+      selectFilterChange={setPageSize}
+      onChange={setPage}
+    />
   )
 }

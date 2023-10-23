@@ -41,7 +41,7 @@ const PreviewModal = () => {
   return (
     <div>
       <Button onClick={openModal}>Click me</Button>
-      <Modal open={isShow} onOpenChange={onOpenChange} setModalState={() => {}}>
+      <Modal open={isShow} onOpenChange={onOpenChange}>
         Hello world
       </Modal>
     </div>

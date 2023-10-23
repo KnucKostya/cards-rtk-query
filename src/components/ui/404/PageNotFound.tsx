@@ -13,7 +13,7 @@ export const PageNotFound = () => {
       <Typography variant={'body1'} htmlTag={'h2'}>
         Sorry! Page not found!
       </Typography>
-      <Button className={s.link} as={Link} to={'/'}>
+      <Button className={s.link} as={Link} to={'/decks'}>
         <Typography variant={'subtitle2'}>Back to home page</Typography>
       </Button>
     </div>

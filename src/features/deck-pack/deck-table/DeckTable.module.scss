@@ -1,13 +1,46 @@
 .iconsCell {
   width: min-content;
   text-align: end;
+  vertical-align: middle;
 }
 
 .icon {
-  cursor: pointer;
-  margin-right: 10px;
+  &:hover {
+    cursor: pointer;
 
-  &:last-child {
-    margin-right: 0;
+    path {
+      fill: var(--color-accent-300);
+    }
+  }
+
+  &:active {
+    path {
+      fill: var(--color-accent-700);
+    }
+  }
+}
+
+.disableIcon {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.iconsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.deckName {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-accent-300);
+  }
+
+  &:active {
+    color: var(--color-accent-700);
   }
 }

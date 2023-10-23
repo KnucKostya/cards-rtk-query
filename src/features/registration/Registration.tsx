@@ -9,9 +9,9 @@ export const Registration = () => {
   const { isSuccess, isLoading } = result
 
   const requestHandler = (data: CreateAccountFields) => {
-    const { email, password } = data
+    const { email, password, name } = data
 
-    signUp({ email, password })
+    signUp({ email, password, name })
   }
 
   if (isLoading) {

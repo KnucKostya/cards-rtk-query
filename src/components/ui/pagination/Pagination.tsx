@@ -10,7 +10,7 @@ type Props = {
   totalCount: number
   currentPage: number
   pageSize: number
-  setCurrentPage?: (value: number) => void
+  setCurrentPage: (value: number) => void
   className?: string
   setItemsPerPage?: (value: number) => void
 }
@@ -33,15 +33,11 @@ export const Pagination = (props: Props) => {
   }
 
   const nextPageHandler = () => {
-    if (setCurrentPage) {
-      setCurrentPage(currentPage + 1)
-    }
+    setCurrentPage(currentPage + 1)
   }
 
   const previousPageHandler = () => {
-    if (setCurrentPage) {
-      setCurrentPage(currentPage - 1)
-    }
+    setCurrentPage(currentPage - 1)
   }
 
   const changeSelectFilterHandler = (value: string) => {
@@ -73,7 +69,7 @@ export const Pagination = (props: Props) => {
       <li
         key={index}
         className={itemClassName}
-        onClick={() => setCurrentPage && setCurrentPage(Number(page))}
+        onClick={() => setCurrentPage(Number(page))}
         role={'button'}
         aria-label={`page ${page}`}
       >
@@ -108,8 +104,7 @@ export const Pagination = (props: Props) => {
           Show
         </Typography>
         <Selector
-          triggerClassName={s.trigger}
-          contentClassName={s.content}
+          className={s.trigger}
           value={String(pageSize)}
           setSelectedValue={changeSelectFilterHandler}
           selectData={options}

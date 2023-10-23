@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-style: normal;
-  color: var(--color-light-100);
+  color: inherit;
 
   &[data-state='h1'] {
     @include typography-text-style(

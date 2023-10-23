@@ -1,0 +1,32 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1006px;
+  margin: 24px auto 0;
+}
+
+.buttonAndDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+
+  margin-top: 69px;
+}
+
+.deckName {
+  margin-top: 33px;
+}
+
+.description {
+  color: var(--color-dark-100);
+}
+
+.button {
+  margin-top: 30px;
+}
